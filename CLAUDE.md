@@ -1,4 +1,9 @@
 > **Keep in sync:** `AGENTS.md` and `CLAUDE.md` contain identical guidelines. If you update one, update the other.
+>
+> Four files derive from this one, for agents that do not read `CLAUDE.md` or `AGENTS.md`. When you change a section listed below, update its copies in the same PR:
+>
+> - **Style guide** (through Product and feature name capitalization) is mirrored verbatim in `.cursor/rules/docs-style.mdc` and `.github/instructions/docs-style.instructions.md`. Both are path-scoped to `src/**/*.mdx`, so they load only when a page is edited.
+> - **Critical rules, Repository structure, Quick reference, Frontmatter, and Syntax** are summarized in `.cursorrules` and `.github/copilot-instructions.md`.
 
 # LangChain Documentation Guidelines
 
@@ -108,7 +113,7 @@ Flat groups (no tabs):
 | Tab | Directory | Groups |
 |-----|-----------|--------|
 | Deep Agents | `src/oss/deepagents/` | Get started, Deployment, Core capabilities, Frontend, Protocols, Code |
-| LangChain | `src/oss/langchain/` | Get started, Core components, Middleware, Frontend, Advanced usage, Agent development, Deploy with LangSmith |
+| LangChain | `src/oss/langchain/` | Get started, Core components, Middleware, Frontend, Advanced usage, Agent development, Production |
 | LangGraph | `src/oss/langgraph/` | Get started, Capabilities, Production, Frontend, LangGraph APIs |
 | Integrations* | `src/oss/python/integrations/` or `src/oss/javascript/integrations/` | Popular Providers, Integrations by component (TS: "General integrations, RAG integrations") |
 | Learn* | `src/oss/` (various) | Tutorials, Conceptual overviews, Additional resources (TS adds: "LangChain Academy") |
@@ -118,6 +123,13 @@ Flat groups (no tabs):
 ## Local development
 
 See [Contributing to documentation](/oss/contributing/documentation) for setup instructions.
+
+### Command-line tools
+
+Two distinct binaries drive local work. Do not assume `mint` is the only command just because the `Makefile` targets shell out to it: `docs` is a first-class, preferred entry point installed separately via Python:
+
+- **`docs`**: The primary CLI, a Python console script (`docs = "pipeline.cli:main"` in `pyproject.toml`) installed into the virtualenv by `uv sync` (the first step of `make install`). Provides `docs dev`, `docs build`, `docs migrate`, and `docs mv`. The `make` targets wrap this CLI. If `docs` is not found after `make install`, relaunch your shell (or activate the venv) so `.venv/bin/docs` lands on `PATH`.
+- **`mint`**: Mintlify's CLI, a separate global npm binary (`npm install -g mint@latest`). The build targets shell out to it for `mint dev`, `mint broken-links`, and `mint export`.
 
 ## Frontmatter
 
@@ -259,7 +271,7 @@ Match these patterns, drawn from established pages, when authoring new content:
 - **Open with definition, then benefit, then task** — start a section (and the page) with a one-sentence statement of what the feature is or does, follow with a sentence on what it enables for the reader, then give the procedure or detail. When a page has a sibling variant (for example, a paid or self-hosted version), link it in the opening lines.
 - **Introduce procedures with a colon lead-in** — precede steps with a phrase such as "To add a channel:", then a numbered list (or the `<Steps>` component) of imperative steps. State a step's result as a follow-on line when it matters ("The Add User modal displays."). Flag optional steps inline with "(Optional)". For long, multi-stage tasks, use `### Step N. <verb>` headings.
 - **Use bold-led definition lists for options** — for parameters, permissions, secrets, or enumerated types, write `- **Term**: Explanation.` and end each explanation with a period.
-- **Link on first mention, and point forward at section ends** — link a feature, class, or term on first mention only, not on repeats. Use the pointer phrasing "For more information, see [Page](/path)". Close substantial pages with a `## See also` list of related links.
+- **Link on first mention, and point forward at section ends** — link a feature, class, or term on first mention only, not on repeats. Two pointer forms are established, and neither is canonical, so do not mass-convert one into the other. Use the long form ("For more information, see [Page](/path)") at section ends and for standalone pointers. Use the short form ("See [Page](/path)") where the pointer trails an already-complete thought, such as an FAQ answer or a table cell, and especially in a run where nearly every item ends in a pointer. Close substantial pages with a `## See also` list of related links.
 - **State requirements and constraints up front** — put permission, plan tier, or preview requirements before the steps they govern ("Adding MCP servers requires admin permissions."). Write hard constraints as plain facts ("Once an agent identity is set, it cannot be changed.").
 
 ### Model references
@@ -267,6 +279,34 @@ Match these patterns, drawn from established pages, when authoring new content:
 Always use the latest generally available (GA) models when referencing LLMs in docstrings and illustrative code snippets. Avoid preview or beta identifiers unless the model has no GA equivalent. Outdated model names signal stale code and confuse users.
 
 Before writing or updating model references, verify current model IDs against the provider's official docs. Do not rely on memorized or cached model names — they go stale quickly.
+
+### Release stage names
+
+LangSmith ships features through three release stages: alpha, beta, and generally available (GA). See [Release stages](/langsmith/release-stages) for what each stage means.
+
+These are common nouns, not proper nouns. Write them lowercase in prose, including parenthetical and inline status markers:
+
+- Lowercase mid-sentence and in markers: "available in beta", "is in beta", "(beta)", "the feature is in alpha".
+- Capitalize only where normal sentence case requires it: the first word of a sentence or heading ("Beta is optional.", "## Beta").
+- Keep the literal product UI label capitalized when quoting it as a tag: the `Beta` tag, frontmatter `tag: "Beta"`. The same applies to a stage name standing alone as a table cell's only label.
+- Spell out "generally available" on first use, then use "GA". GA is always uppercase.
+- Do not change code identifiers, package version identifiers (`1.0.0b1`), or literal CLI output that contains "Beta".
+
+### Product and feature name capitalization
+
+Capitalize a word when it refers to a **product or brand name**. Use lowercase when it refers to a **common noun** — a thing you build, an instance, or a type.
+
+**Capitalize** product and brand names:
+
+- LangChain, LangGraph, LangSmith, Deep Agents, Fleet, Engine
+
+**Lowercase** common nouns (things you create, instances, or types):
+
+- "Create a dashboard" (dashboard = a thing you build, not a product name)
+- "a deep agent created using Deep Agents" (the first "deep agent" is a common noun; "Deep Agents" is the product name)
+- "Run an experiment", "View your traces", "Manage your projects"
+
+When in doubt, ask: is this word the product's proper name, or is it describing a thing the user creates or works with? If the latter, use lowercase.
 
 ## Adding pages
 
@@ -298,7 +338,10 @@ Before writing or updating model references, verify current model IDs against th
 **Add a reusable snippet:**
 
 1. Create `src/snippets/<product>/<name>.mdx`
-2. Reference with `<Snippet file="<product>/<name>.mdx" />`
+2. Import it below the frontmatter of the consuming page: `import PascalCaseName from '/snippets/<product>/<name>.mdx';`
+3. Render it where the content belongs: `<PascalCaseName />`
+
+Use the import form, not Mintlify's `<Snippet file="..." />`. The build pipeline rewrites snippet imports to language-specific copies under `/snippets/{python,javascript}/` (`_rewrite_snippet_imports_for_language` in `pipeline/core/builder.py`), and that rewrite only matches `from '/snippets/...'` imports. Every snippet reference in `src/` uses the import form.
 
 ## Debugging
 

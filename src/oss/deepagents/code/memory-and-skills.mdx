@@ -60,6 +60,10 @@ It remembers for future sessions:
 
 Both files are appended to the system prompt at startup.
 
+<Tip>
+To generate a repository wiki and wire pointers into `AGENTS.md` and `CLAUDE.md` for coding agents, see [OpenWiki](/oss/openwiki/overview).
+</Tip>
+
 ### How memory works
 
 The agent may also read its memory files when answering project-specific questions or when you reference past work or patterns.
@@ -164,7 +168,7 @@ Skills are loaded from the following directories at startup:
 .claude/skills/            (experimental)
 ```
 
-When duplicate skill names exist, later-precedence directories override earlier ones (see [App data](/oss/deepagents/code/data-locations#skills)).
+When duplicate skill names exist, later-precedence directories override earlier ones (see [App data](/oss/deepagents/code/configuration#skills)).
 
 For project-specific skills (under `.deepagents/skills/` or `.agents/skills/`), the project root is identified by a containing `.git` folder.
 

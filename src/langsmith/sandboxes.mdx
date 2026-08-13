@@ -18,6 +18,13 @@ From the [LangSmith homepage](https://smith.langchain.com), select **Sandboxes**
 | GCP EU (`eu.smith.langchain.com`) | Generally available |
 | GCP APAC (`apac.smith.langchain.com`) | Generally available |
 | AWS US (`aws.smith.langchain.com`) | Generally available |
+| [BYOC](/langsmith/byoc) (your data plane URL) | Generally available |
+
+<Warning>
+On BYOC, use an API key that belongs to a BYOC workspace.
+</Warning>
+
+For self-hosted LangSmith deployments, see [Enable Sandboxes on self-hosted deployments](/langsmith/deploy-self-hosted-full-platform#enable-sandboxes).
 
 ## Get started
 
@@ -99,7 +106,11 @@ To wire sandboxes into agent code, see the Open Source docs:
   Inject credentials into outbound API requests without hardcoding secrets.
 </Card>
 
-<Card title="Permissions" icon="user-lock" href="/langsmith/sandbox-permissions">
+<Card title="Mounts" icon="folder" href="/langsmith/sandbox-mounts">
+  Attach S3 buckets, GCS buckets, and public Git repositories to a sandbox filesystem.
+</Card>
+
+<Card title="Permissions" icon="user-key" href="/langsmith/sandbox-permissions">
   Control which workspace members can interact with a sandbox after it is created.
 </Card>
 
@@ -111,7 +122,11 @@ To wire sandboxes into agent code, see the Open Source docs:
   Create and manage sandboxes programmatically with the Python or TypeScript SDK.
 </Card>
 
-<Card title="Harbor" icon="flask" href="/langsmith/sandbox-harbor">
+<Card title="Self-hosted setup" icon="server" href="/langsmith/deploy-self-hosted-full-platform#enable-sandboxes">
+  Enable Sandboxes on self-hosted LangSmith deployments with Helm or Terraform.
+</Card>
+
+<Card title="Harbor" icon="flask" href="/langsmith/harbor-integrations#sandboxes">
   Run Harbor evaluations and rollouts on LangSmith sandboxes.
 </Card>
 
