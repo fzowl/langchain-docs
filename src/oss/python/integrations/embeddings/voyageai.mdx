@@ -1,22 +1,22 @@
 ---
-title: VoyageAI by MongoDB integration
+title: Voyage AI integration
 description: Integrate with the VoyageAIEmbeddings embedding model using LangChain Python.
 integration:
-  name: VoyageAI by MongoDB
+  name: Voyage AI
   pypi: langchain-voyageai
 ---
 
 import LangchainCommunityUnmaintained from '/snippets/oss/langchain-community-unmaintained.mdx';
 
->[VoyageAI by MongoDB](https://www.voyageai.com/) provides cutting-edge embedding/vectorizations models.
+>[Voyage AI](https://www.voyageai.com/) provides cutting-edge embedding/vectorizations models.
 
-Load the VoyageAI by MongoDB embedding class. (Install the LangChain partner package with `pip install langchain-voyageai`)
+Load the Voyage AI embedding class. (Install the LangChain partner package with `pip install langchain-voyageai`)
 
 ```python
 from langchain_voyageai import VoyageAIEmbeddings
 ```
 
-VoyageAI by MongoDB uses API keys to monitor usage and manage permissions. To obtain your key, create an account on the [homepage](https://www.voyageai.com). Then, create a `VoyageAIEmbeddings` model with your API key. You can use any of the following models ([source](https://docs.voyageai.com/docs/embeddings)):
+Voyage AI uses API keys to monitor usage and manage permissions. To obtain your key, create an account on the [homepage](https://www.voyageai.com). Then, create a `VoyageAIEmbeddings` model with your API key. You can use any of the following models ([source](https://docs.voyageai.com/docs/embeddings)):
 
 - `voyage-4-large`
 - `voyage-4`
