@@ -22,6 +22,7 @@ VoyageAI by MongoDB uses API keys to monitor usage and manage permissions. To ob
 - `voyage-4`
 - `voyage-4-lite`
 - `voyage-code-4`
+- `voyage-4-nano`
 - `voyage-context-4`
 - `voyage-context-3`
 - `voyage-finance-2`
@@ -119,7 +120,7 @@ An LLMChain is a chain that composes basic LLM functionality. It consists of a P
 
 Contextual models (`voyage-context-4` and `voyage-context-3`) embed each chunk with the context of the surrounding chunks from the same document, improving retrieval quality without a separate contextualization step. Call these models through the `voyageai` client's `contextualized_embed` method ([source](https://docs.voyageai.com/docs/contextualized-chunk-embeddings)):
 
-```python
+```bash
 pip install -qU voyageai
 ```
 
