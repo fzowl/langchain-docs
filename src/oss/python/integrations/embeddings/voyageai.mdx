@@ -1,6 +1,6 @@
 ---
-title: Voyage AI integration
-description: Integrate with the Voyage AI embedding model using LangChain Python.
+title: VoyageAI by MongoDB integration
+description: Integrate with the VoyageAI by MongoDB embedding model using LangChain Python.
 integration:
   name: Voyage AI
   pypi: langchain-voyageai
@@ -8,34 +8,34 @@ integration:
 
 import LangchainCommunityUnmaintained from '/snippets/oss/langchain-community-unmaintained.mdx';
 
->[Voyage AI](https://www.voyageai.com/) provides cutting-edge embedding/vectorizations models.
+>[VoyageAI by MongoDB](https://www.voyageai.com/) provides cutting-edge embedding and vectorization models.
 
-Let's load the Voyage AI Embedding class. (Install the LangChain partner package with `pip install langchain-voyageai`)
+Load the VoyageAI by MongoDB embedding class. (Install the LangChain partner package with `pip install langchain-voyageai`)
 
 ```python
 from langchain_voyageai import VoyageAIEmbeddings
 ```
 
-Voyage AI utilizes API keys to monitor usage and manage permissions. To obtain your key, create an account on our [homepage](https://www.voyageai.com). Then, create a VoyageEmbeddings model with your API key. You can use any of the following models: ([source](https://docs.voyageai.com/docs/embeddings)):
+VoyageAI by MongoDB uses API keys to monitor usage and manage permissions. To obtain your key, create an account on the [homepage](https://www.voyageai.com). Then, create a VoyageAIEmbeddings model with your API key. You can use any of the following models ([source](https://docs.voyageai.com/docs/embeddings)):
 
 - `voyage-4-large`
 - `voyage-4`
 - `voyage-4-lite`
 - `voyage-code-4`
 - `voyage-context-4`
-- `voyage-context-3`
+- `voyage-finance-2`
+- `voyage-law-2`
+- `voyage-3-large`
 - `voyage-3.5`
 - `voyage-3.5-lite`
-- `voyage-3-large`
 - `voyage-3`
 - `voyage-3-lite`
-- `voyage-large-2`
-- `voyage-code-2`
-- `voyage-2`
-- `voyage-law-2`
-- `voyage-large-2-instruct`
-- `voyage-finance-2`
+- `voyage-code-3`
+- `voyage-context-3`
 - `voyage-multilingual-2`
+- `voyage-large-2-instruct`
+- `voyage-large-2`
+- `voyage-2`
 
 ```python
 embeddings = VoyageAIEmbeddings(
@@ -113,4 +113,32 @@ print(top1_retrieved_doc)
 
 ```text
 An LLMChain is a chain that composes basic LLM functionality. It consists of a PromptTemplate and a language model (either an LLM or chat model). It formats the prompt template using the input key values provided (and also memory key values, if available), passes the formatted string to LLM and returns the LLM output.
+```
+
+## Contextualized chunk embeddings
+
+The contextual models (`voyage-context-4` and `voyage-context-3`) embed each chunk with awareness of the surrounding document, improving retrieval quality for long, chunked documents. Call the `contextualized_embed` API on the `voyageai` client directly.
+
+To let VoyageAI by MongoDB chunk each document server-side, pass a flat `list[str]` of documents as `inputs`, set `input_type="document"`, and enable `enable_auto_chunking=True`. When auto chunking is enabled, `chunk_size` sets the target chunk size in tokens (up to a maximum of 32000):
+
+```python
+import voyageai
+
+vo = voyageai.Client()  # reads the VOYAGE_API_KEY environment variable
+
+documents = [
+    "Caching embeddings enables the storage or temporary caching of embeddings, eliminating the necessity to recompute them each time.",
+    "A Runnable represents a generic unit of work that can be invoked, batched, streamed, and/or transformed.",
+]
+
+result = vo.contextualized_embed(
+    inputs=documents,
+    model="voyage-context-4",
+    input_type="document",
+    enable_auto_chunking=True,
+    chunk_size=32000,
+)
+
+# One entry per input document; each holds the per-chunk embeddings.
+document_embeddings = [chunk_embeddings for r in result.results for chunk_embeddings in r.embeddings]
 ```
