@@ -3,8 +3,8 @@ title: Build a personal assistant with subagents
 sidebarTitle: "Subagents: Personal assistant"
 ---
 
-import ChatModelTabsPy from '/snippets/chat-model-tabs.mdx';
-import ChatModelTabsJs from '/snippets/chat-model-tabs-js.mdx';
+import ChatModelTabsPy from '/snippets/javascript/chat-model-tabs.mdx';
+import ChatModelTabsJs from '/snippets/javascript/chat-model-tabs-js.mdx';
 
 ## Overview
 
@@ -16,6 +16,8 @@ In this tutorial, you'll build a personal assistant system that demonstrates the
 - An **email agent** that manages communication, drafts messages, and sends notifications.
 
 We will also incorporate [human-in-the-loop review](/oss/javascript/langchain/human-in-the-loop) to allow users to approve, edit, and reject actions (such as outbound emails) as desired.
+
+
 
 ### Why use a supervisor?
 
@@ -58,11 +60,11 @@ Set up [LangSmith](https://smith.langchain.com?utm_source=docs&utm_medium=cta&ut
 
 
 <CodeGroup>
-```bash bash
+```bash Shell
 export LANGSMITH_TRACING="true"
 export LANGSMITH_API_KEY="..."
 ```
-```typescript typescript
+```typescript TypeScript
 process.env.LANGSMITH_TRACING = "true";
 process.env.LANGSMITH_API_KEY = "...";
 ```
@@ -154,7 +156,15 @@ The calendar agent understands natural language scheduling requests and translat
 ```typescript
 import { createAgent } from "langchain";
 
+const now = new Date();
+const today = [
+  now.getFullYear(),
+  String(now.getMonth() + 1).padStart(2, "0"),
+  String(now.getDate()).padStart(2, "0"),
+].join("-");
+
 const CALENDAR_AGENT_PROMPT = `
+Today's date is ${today}.
 You are a calendar scheduling assistant.
 Parse natural language scheduling requests (e.g., 'next Tuesday at 2pm')
 into proper ISO datetime formats.
@@ -381,7 +391,7 @@ const SUPERVISOR_PROMPT = `
 You are a helpful personal assistant.
 You can schedule calendar events and send emails.
 Break down user requests into appropriate tool calls and coordinate the results.
-When a request involves multiple actions, use multiple tools in sequence.
+When a request involves multiple actions, use multiple tools in sequence or in parallel as appropriate.
 `.trim();
 
 const supervisorAgent = createAgent({
@@ -508,6 +518,10 @@ Let me know if you'd like to add more details to the meeting or include addition
 
 The supervisor recognizes this requires both calendar and email actions, calls `schedule_event` for the meeting, then calls `manage_email` for the reminder. Each sub-agent completes its task, and the supervisor synthesizes both results into a coherent response.
 
+<Note>
+The supervisor dispatches tasks to subagents sequentially by default. Each tool call completes before the next one starts. However, many LLMs will issue multiple tool calls in a single response (as shown in the trace above, where both `schedule_event` and `manage_email` are called together), which the runtime executes in parallel. You can also configure explicit parallel dispatch. See the [`create_supervisor` reference docs](https://reference.langchain.com/python/langgraph-supervisor/supervisor/create_supervisor) for details.
+</Note>
+
 <Tip>
 Refer to the [LangSmith trace](https://smith.langchain.com/public/95cd00a3-d1f9-4dba-9731-7bf733fb6a3c/r) to see the detailed information flow for the above run, including individual chat model prompts and responses.
 </Tip>
@@ -598,10 +612,18 @@ const llm = new ChatAnthropic({
   model: "gpt-5.5",
 });
 
+const now = new Date();
+const today = [
+  now.getFullYear(),
+  String(now.getMonth() + 1).padStart(2, "0"),
+  String(now.getDate()).padStart(2, "0"),
+].join("-");
+
 const calendarAgent = createAgent({
   model: llm,
   tools: [createCalendarEvent, getAvailableTimeSlots],
   systemPrompt: `
+Today's date is ${today}.
 You are a calendar scheduling assistant.
 Parse natural language scheduling requests (e.g., 'next Tuesday at 2pm')
 into proper ISO datetime formats.
