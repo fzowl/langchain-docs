@@ -1360,7 +1360,7 @@
           "tracer-sessions"
         ],
         "summary": "Get insights jobs (Beta)",
-        "description": "Get all clusters for a session.",
+        "description": "List Insights jobs for a project.",
         "operationId": "_Beta__Get_Insights_Jobs_api_v1_sessions__session_id__insights_get",
         "security": [
           {
@@ -1470,7 +1470,7 @@
           "tracer-sessions"
         ],
         "summary": "Create insights job (Beta)",
-        "description": "Create an insights job.",
+        "description": "Create an Insights job for a project.",
         "operationId": "_Beta__Create_Insights_Job_api_v1_sessions__session_id__insights_post",
         "security": [
           {
@@ -1536,7 +1536,7 @@
           "tracer-sessions"
         ],
         "summary": "Get insights job configs (Beta)",
-        "description": "Get all insights job configs for a session.",
+        "description": "List Insights job configurations for a project.",
         "operationId": "_Beta__Get_Insights_Job_Configs_api_v1_sessions__session_id__insights_configs_get",
         "security": [
           {
@@ -1600,7 +1600,7 @@
           "tracer-sessions"
         ],
         "summary": "Create insights job config (Beta)",
-        "description": "Save an insights job config.",
+        "description": "Create an Insights job configuration for a project.",
         "operationId": "_Beta__Create_Insights_Job_Config_api_v1_sessions__session_id__insights_configs_post",
         "security": [
           {
@@ -1666,7 +1666,7 @@
           "tracer-sessions"
         ],
         "summary": "Auto-generate insights job config (Beta)",
-        "description": "Auto-generate an insights job config.",
+        "description": "Generate an Insights job configuration for a project.",
         "operationId": "_Beta__Auto_Generate_Insights_Job_Config_api_v1_sessions__session_id__insights_configs_generate_post",
         "security": [
           {
@@ -1732,7 +1732,7 @@
           "tracer-sessions"
         ],
         "summary": "Update insights job config (Beta)",
-        "description": "Update an insights job config.",
+        "description": "Update an Insights job configuration for a project.",
         "operationId": "_Beta__Update_Insights_Job_Config_api_v1_sessions__session_id__insights_configs__config_id__patch",
         "security": [
           {
@@ -1806,7 +1806,7 @@
           "tracer-sessions"
         ],
         "summary": "Delete insights job config (Beta)",
-        "description": "Delete an insights job config.",
+        "description": "Delete an Insights job configuration for a project.",
         "operationId": "_Beta__Delete_Insights_Job_Config_api_v1_sessions__session_id__insights_configs__config_id__delete",
         "security": [
           {
@@ -1872,7 +1872,7 @@
           "tracer-sessions"
         ],
         "summary": "Get insights job (Beta)",
-        "description": "Get a specific cluster job for a session.",
+        "description": "Get an Insights job for a project.",
         "operationId": "_Beta__Get_Insights_Job_api_v1_sessions__session_id__insights__job_id__get",
         "security": [
           {
@@ -1936,7 +1936,7 @@
           "tracer-sessions"
         ],
         "summary": "Update insights job (Beta)",
-        "description": "Update a session cluster job.",
+        "description": "Update an Insights job for a project.",
         "operationId": "_Beta__Update_Insights_Job_api_v1_sessions__session_id__insights__job_id__patch",
         "security": [
           {
@@ -2010,7 +2010,7 @@
           "tracer-sessions"
         ],
         "summary": "Delete insights job (Beta)",
-        "description": "Delete a session cluster job.",
+        "description": "Delete an Insights job for a project.",
         "operationId": "_Beta__Delete_Insights_Job_api_v1_sessions__session_id__insights__job_id__delete",
         "security": [
           {
@@ -2076,7 +2076,7 @@
           "tracer-sessions"
         ],
         "summary": "Get run cluster from insights job (Beta)",
-        "description": "Get a specific cluster for a session.",
+        "description": "Get a cluster from the report produced by an Insights job.",
         "operationId": "_Beta__Get_Run_Cluster_from_Insights_Job_api_v1_sessions__session_id__insights__job_id__clusters__cluster_id__get",
         "security": [
           {
@@ -2152,7 +2152,7 @@
           "tracer-sessions"
         ],
         "summary": "Get runs from insights job (Beta)",
-        "description": "Get all runs for a cluster job, optionally filtered by cluster.",
+        "description": "List runs analyzed by an Insights job, optionally filtered by report cluster.",
         "operationId": "_Beta__Get_Runs_from_Insights_Job_api_v1_sessions__session_id__insights__job_id__runs_get",
         "security": [
           {
@@ -8978,8 +8978,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -26223,8 +26223,8 @@
             "name": "include_stats",
             "in": "query",
             "schema": {
-              "type": "boolean",
               "default": true,
+              "type": "boolean",
               "title": "Include Stats"
             }
           },
@@ -26234,9 +26234,9 @@
             "in": "query",
             "schema": {
               "maximum": 100,
-              "type": "integer",
-              "minimum": 1,
               "default": 20,
+              "minimum": 1,
+              "type": "integer",
               "title": "Limit"
             }
           },
@@ -26245,9 +26245,9 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "minimum": 0,
               "default": 0,
+              "minimum": 0,
+              "type": "integer",
               "title": "Offset"
             }
           },
@@ -26457,8 +26457,8 @@
             "name": "get_examples",
             "in": "query",
             "schema": {
-              "type": "boolean",
               "default": false,
+              "type": "boolean",
               "title": "Get Examples"
             }
           },
@@ -26476,8 +26476,8 @@
             "name": "include_model",
             "in": "query",
             "schema": {
-              "type": "boolean",
               "default": false,
+              "type": "boolean",
               "title": "Include Model"
             }
           },
@@ -26485,8 +26485,8 @@
             "name": "is_view",
             "in": "query",
             "schema": {
-              "type": "boolean",
               "default": false,
+              "type": "boolean",
               "title": "Is View"
             }
           }
@@ -27550,12 +27550,12 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "enum": [
                 "needs_my_review",
                 "needs_others_review",
                 "archived"
               ],
+              "type": "string",
               "title": "Status"
             }
           },
@@ -27564,8 +27564,8 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "type": "integer",
               "default": 20,
+              "type": "integer",
               "title": "Page Size"
             }
           },
@@ -27583,11 +27583,11 @@
             "name": "item_type",
             "in": "query",
             "schema": {
-              "type": "string",
               "enum": [
                 "RUN",
                 "THREAD"
               ],
+              "type": "string",
               "title": "Item Type"
             }
           },
@@ -27596,8 +27596,8 @@
             "name": "min_start_time",
             "in": "query",
             "schema": {
-              "format": "date-time",
               "type": "string",
+              "format": "date-time",
               "title": "Min Start Time"
             }
           },
@@ -27606,8 +27606,8 @@
             "name": "max_start_time",
             "in": "query",
             "schema": {
-              "format": "date-time",
               "type": "string",
+              "format": "date-time",
               "title": "Max Start Time"
             }
           },
@@ -27616,12 +27616,12 @@
             "name": "direction",
             "in": "query",
             "schema": {
-              "type": "string",
-              "default": "forward",
               "enum": [
                 "forward",
                 "backward"
               ],
+              "default": "forward",
+              "type": "string",
               "title": "Direction"
             }
           }
@@ -27833,8 +27833,8 @@
             "name": "min_start_time",
             "in": "query",
             "schema": {
-              "format": "date-time",
               "type": "string",
+              "format": "date-time",
               "title": "Min Start Time"
             }
           },
@@ -27843,8 +27843,8 @@
             "name": "max_start_time",
             "in": "query",
             "schema": {
-              "format": "date-time",
               "type": "string",
+              "format": "date-time",
               "title": "Max Start Time"
             }
           }
@@ -28499,8 +28499,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -28618,8 +28618,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -28772,10 +28772,10 @@
             "style": "form",
             "explode": false,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Tag Value Id"
             }
           },
@@ -28795,11 +28795,20 @@
             "style": "form",
             "explode": false,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Resource Id"
+            }
+          },
+          {
+            "description": "Filter to evaluators attached to the agent's environments or tagged datasets",
+            "name": "agent_id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "title": "Agent Id"
             }
           },
           {
@@ -28825,8 +28834,8 @@
             "name": "limit",
             "in": "query",
             "schema": {
-              "type": "integer",
               "default": 100,
+              "type": "integer",
               "title": "Limit"
             }
           },
@@ -28835,8 +28844,8 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "type": "integer",
               "default": 0,
+              "type": "integer",
               "title": "Offset"
             }
           }
@@ -29003,10 +29012,10 @@
             "style": "form",
             "explode": false,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Evaluator Ids"
             }
           },
@@ -29137,10 +29146,10 @@
             "style": "form",
             "explode": false,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Resource Id"
             }
           },
@@ -29169,10 +29178,10 @@
             "style": "form",
             "explode": false,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Tag Value Id"
             }
           },
@@ -30261,8 +30270,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -30351,8 +30360,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -30434,8 +30443,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -30690,11 +30699,11 @@
             "name": "repo_type",
             "in": "query",
             "schema": {
-              "type": "string",
               "enum": [
                 "agent",
                 "skill"
               ],
+              "type": "string",
               "title": "Repo Type"
             }
           }
@@ -30922,7 +30931,6 @@
             "name": "status",
             "in": "query",
             "schema": {
-              "type": "string",
               "enum": [
                 "open",
                 "fixing",
@@ -30930,6 +30938,7 @@
                 "completed",
                 "ignored"
               ],
+              "type": "string",
               "title": "Status"
             }
           },
@@ -30938,13 +30947,13 @@
             "name": "severity",
             "in": "query",
             "schema": {
-              "type": "integer",
               "enum": [
                 0,
                 1,
                 2,
                 3
               ],
+              "type": "integer",
               "title": "Severity"
             }
           },
@@ -30955,6 +30964,7 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "enum": [
                   0,
@@ -30964,7 +30974,6 @@
                 ],
                 "type": "integer"
               },
-              "type": "array",
               "title": "Severity Exact"
             }
           },
@@ -30975,6 +30984,7 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "enum": [
                   "fixing",
@@ -30983,7 +30993,6 @@
                 ],
                 "type": "string"
               },
-              "type": "array",
               "title": "Activity"
             }
           },
@@ -31001,8 +31010,8 @@
             "name": "trace_id",
             "in": "query",
             "schema": {
-              "format": "uuid",
               "type": "string",
+              "format": "uuid",
               "title": "Trace Id"
             }
           },
@@ -31020,7 +31029,6 @@
             "name": "sort_by",
             "in": "query",
             "schema": {
-              "type": "string",
               "enum": [
                 "default",
                 "created_at",
@@ -31030,6 +31038,7 @@
                 "trace_count",
                 "severity"
               ],
+              "type": "string",
               "title": "Sort By"
             }
           },
@@ -33380,10 +33389,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Name Like"
             }
           },
@@ -33394,10 +33403,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Email Like"
             }
           },
@@ -33408,10 +33417,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Workspace Name Like"
             }
           },
@@ -33422,10 +33431,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Organization Role Like"
             }
           },
@@ -33436,10 +33445,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Workspace Role Like"
             }
           }
@@ -33662,10 +33671,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Access Policy Ids"
             }
           }
@@ -34273,8 +34282,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -36041,8 +36050,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -36114,8 +36123,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -36141,8 +36150,8 @@
             "name": "trace_id",
             "in": "query",
             "schema": {
-              "format": "uuid",
               "type": "string",
+              "format": "uuid",
               "title": "Trace Id"
             }
           }
@@ -36216,8 +36225,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -36226,8 +36235,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -36236,8 +36245,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "format": "date-time",
               "type": "string",
+              "format": "date-time",
               "title": "Start Time"
             }
           },
@@ -36249,10 +36258,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           }
@@ -36334,8 +36343,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -36346,10 +36355,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           }
@@ -36428,8 +36437,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -36440,10 +36449,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           },
@@ -36552,8 +36561,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -36562,8 +36571,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -36574,10 +36583,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           }
@@ -36664,8 +36673,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -36674,8 +36683,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -36684,8 +36693,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "format": "date-time",
               "type": "string",
+              "format": "date-time",
               "title": "Start Time"
             }
           },
@@ -36697,10 +36706,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           }
@@ -36810,8 +36819,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -37072,8 +37081,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -37082,8 +37091,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "format": "uuid",
               "type": "string",
+              "format": "uuid",
               "title": "Project Id"
             }
           },
@@ -37094,6 +37103,7 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "enum": [
                   "ID",
@@ -37145,7 +37155,6 @@
                 ],
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           },
@@ -37154,8 +37163,8 @@
             "name": "start_time",
             "in": "query",
             "schema": {
-              "format": "date-time",
               "type": "string",
+              "format": "date-time",
               "title": "Start Time"
             }
           }
@@ -37289,8 +37298,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -37404,8 +37413,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -37517,8 +37526,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -37614,8 +37623,8 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "type": "integer",
               "default": 20,
+              "type": "integer",
               "title": "Page Size"
             }
           },
@@ -37633,8 +37642,8 @@
             "name": "limit",
             "in": "query",
             "schema": {
-              "type": "integer",
               "default": 50,
+              "type": "integer",
               "title": "Limit"
             }
           },
@@ -37643,8 +37652,8 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "type": "integer",
               "default": 0,
+              "type": "integer",
               "title": "Offset"
             }
           },
@@ -37682,10 +37691,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Label"
             }
           },
@@ -37694,8 +37703,8 @@
             "name": "sort_by",
             "in": "query",
             "schema": {
-              "type": "string",
               "default": "created_at",
+              "type": "string",
               "title": "Sort By"
             }
           },
@@ -37704,8 +37713,8 @@
             "name": "sort_order",
             "in": "query",
             "schema": {
-              "type": "string",
               "default": "desc",
+              "type": "string",
               "title": "Sort Order"
             }
           },
@@ -37714,8 +37723,8 @@
             "name": "sort_direction",
             "in": "query",
             "schema": {
-              "type": "string",
               "default": "desc",
+              "type": "string",
               "title": "Sort Direction"
             }
           }
@@ -39204,8 +39213,8 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "type": "integer",
               "default": 20,
+              "type": "integer",
               "title": "Page Size"
             }
           },
@@ -39223,8 +39232,8 @@
             "name": "limit",
             "in": "query",
             "schema": {
-              "type": "integer",
               "default": 50,
+              "type": "integer",
               "title": "Limit"
             }
           },
@@ -39233,8 +39242,8 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "type": "integer",
               "default": 0,
+              "type": "integer",
               "title": "Offset"
             }
           },
@@ -39272,10 +39281,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Label"
             }
           },
@@ -39284,8 +39293,8 @@
             "name": "sort_by",
             "in": "query",
             "schema": {
-              "type": "string",
               "default": "created_at",
+              "type": "string",
               "title": "Sort By"
             }
           },
@@ -39294,8 +39303,8 @@
             "name": "sort_order",
             "in": "query",
             "schema": {
-              "type": "string",
               "default": "desc",
+              "type": "string",
               "title": "Sort Order"
             }
           },
@@ -39304,8 +39313,8 @@
             "name": "sort_direction",
             "in": "query",
             "schema": {
-              "type": "string",
               "default": "desc",
+              "type": "string",
               "title": "Sort Direction"
             }
           }
@@ -39752,8 +39761,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "format": "date-time",
               "type": "string",
+              "format": "date-time",
               "title": "Start Time"
             }
           },
@@ -39763,8 +39772,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "format": "date-time",
               "type": "string",
+              "format": "date-time",
               "title": "End Time"
             }
           },
@@ -39773,11 +39782,11 @@
             "name": "resource_type",
             "in": "query",
             "schema": {
-              "type": "string",
               "enum": [
                 "SANDBOX",
                 "SNAPSHOT"
               ],
+              "type": "string",
               "title": "Resource Type"
             }
           },
@@ -39788,10 +39797,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Resource Ids"
             }
           },
@@ -39801,10 +39810,24 @@
             "in": "query",
             "schema": {
               "maximum": 100,
-              "type": "integer",
-              "minimum": 1,
               "default": 20,
+              "minimum": 1,
+              "type": "integer",
               "title": "Page Size"
+            }
+          },
+          {
+            "description": "HOUR returns hourly buckets. RESOURCE sums each resource over the requested interval and sets period_start to start_time.",
+            "name": "granularity",
+            "in": "query",
+            "schema": {
+              "enum": [
+                "HOUR",
+                "RESOURCE"
+              ],
+              "default": "HOUR",
+              "type": "string",
+              "title": "Granularity"
             }
           },
           {
@@ -41168,8 +41191,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "format": "uuid",
               "type": "string",
+              "format": "uuid",
               "title": "Project Id"
             }
           }
@@ -41373,8 +41396,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "format": "uuid",
               "type": "string",
+              "format": "uuid",
               "title": "Project Id"
             }
           }
@@ -41476,6 +41499,7 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "enum": [
                   "TURNS",
@@ -41498,7 +41522,6 @@
                 ],
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           },
@@ -41508,8 +41531,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "format": "uuid",
               "type": "string",
+              "format": "uuid",
               "title": "Session Id"
             }
           }
@@ -41661,9 +41684,9 @@
             "in": "query",
             "schema": {
               "maximum": 100,
-              "type": "integer",
-              "minimum": 1,
               "default": 20,
+              "minimum": 1,
+              "type": "integer",
               "title": "Page Size"
             }
           },
@@ -41673,8 +41696,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "format": "uuid",
               "type": "string",
+              "format": "uuid",
               "title": "Project Id"
             }
           },
@@ -41689,6 +41712,7 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "enum": [
                   "THREAD_ID",
@@ -41719,8 +41743,25 @@
                 ],
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
+            }
+          },
+          {
+            "description": "`trace_filter` narrows traces by applying a LangSmith filter expression to each trace's root run.",
+            "name": "trace_filter",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "title": "Trace Filter"
+            }
+          },
+          {
+            "description": "`tree_filter` narrows traces to those containing at least one run that matches the LangSmith filter expression.",
+            "name": "tree_filter",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "title": "Tree Filter"
             }
           }
         ],
@@ -42003,8 +42044,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -42021,8 +42062,8 @@
             "name": "max_start_time",
             "in": "query",
             "schema": {
-              "format": "date-time",
               "type": "string",
+              "format": "date-time",
               "title": "Max Start Time"
             }
           },
@@ -42031,8 +42072,8 @@
             "name": "min_start_time",
             "in": "query",
             "schema": {
-              "format": "date-time",
               "type": "string",
+              "format": "date-time",
               "title": "Min Start Time"
             }
           },
@@ -42042,8 +42083,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "format": "uuid",
               "type": "string",
+              "format": "uuid",
               "title": "Project Id"
             }
           },
@@ -42054,6 +42095,7 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "enum": [
                   "ID",
@@ -42105,7 +42147,6 @@
                 ],
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           }
@@ -42329,8 +42370,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -42428,8 +42469,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -42562,8 +42603,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -42573,8 +42614,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -42669,8 +42710,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -42680,8 +42721,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -42769,8 +42810,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -42780,8 +42821,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -44049,9 +44090,9 @@
             "in": "query",
             "schema": {
               "maximum": 100,
-              "type": "integer",
-              "minimum": 1,
               "default": 50,
+              "minimum": 1,
+              "type": "integer",
               "title": "Limit"
             }
           },
@@ -44059,9 +44100,9 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "minimum": 0,
               "default": 0,
+              "minimum": 0,
+              "type": "integer",
               "title": "Offset"
             }
           }
@@ -44920,8 +44961,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -45025,9 +45066,9 @@
             "in": "query",
             "schema": {
               "maximum": 100,
-              "type": "integer",
-              "minimum": 1,
               "default": 20,
+              "minimum": 1,
+              "type": "integer",
               "title": "Page Size"
             }
           },
@@ -47464,6 +47505,7 @@
           "create_sandbox_policy",
           "update_sandbox_policy",
           "delete_sandbox_policy",
+          "create_computer_environment",
           "list_sandbox_claims",
           "get_sandbox_claim",
           "get_sandbox_claim_status",
@@ -49827,7 +49869,7 @@
           "prebuilt"
         ],
         "title": "ClusteringJobConfigResponse",
-        "description": "Full clustering job config with all details."
+        "description": "An Insights job configuration."
       },
       "CodeEvaluatorLanguage": {
         "type": "string",
@@ -50355,7 +50397,7 @@
           "config"
         ],
         "title": "CreateClusteringJobConfigRequest",
-        "description": "Request to create a clustering job config."
+        "description": "Request to create an Insights job configuration."
       },
       "CreateClusteringJobConfigResponse": {
         "properties": {
@@ -50402,7 +50444,7 @@
           "config"
         ],
         "title": "CreateClusteringJobConfigResponse",
-        "description": "Response to create a clustering job config."
+        "description": "An Insights job configuration."
       },
       "CreateCommentRequest": {
         "properties": {
@@ -50787,7 +50829,7 @@
         },
         "type": "object",
         "title": "CreateRunClusteringJobRequest",
-        "description": "Request to create a run clustering job."
+        "description": "Configuration for an Insights job."
       },
       "CreateRunClusteringJobResponse": {
         "properties": {
@@ -50823,7 +50865,7 @@
           "status"
         ],
         "title": "CreateRunClusteringJobResponse",
-        "description": "Response to creating a run clustering job."
+        "description": "An Insights job queued for execution."
       },
       "CustomChartCreate": {
         "properties": {
@@ -54230,7 +54272,7 @@
           "message"
         ],
         "title": "DeleteClusteringJobConfigResponse",
-        "description": "Response to delete a clustering job config."
+        "description": "Confirmation that an Insights job configuration was deleted."
       },
       "DeleteRunClusteringJobResponse": {
         "properties": {
@@ -54250,7 +54292,7 @@
           "message"
         ],
         "title": "DeleteRunClusteringJobResponse",
-        "description": "Response to delete a session cluster job."
+        "description": "Confirmation that an Insights job was deleted."
       },
       "DemoConfig": {
         "properties": {
@@ -57513,7 +57555,7 @@
           "user_context"
         ],
         "title": "GenerateClusteringJobConfigRequest",
-        "description": "Request to auto-generate a clustering job config."
+        "description": "Request to generate an Insights job configuration."
       },
       "GenerateClusteringJobConfigResponse": {
         "properties": {
@@ -57553,7 +57595,7 @@
           "summary_prompt"
         ],
         "title": "GenerateClusteringJobConfigResponse",
-        "description": "Auto-generated clustering job config (not persisted; frontend creates the config)."
+        "description": "Generated Insights job configuration. This configuration is not saved."
       },
       "GenerateSyntheticExamplesBody": {
         "properties": {
@@ -57598,7 +57640,7 @@
           "configs"
         ],
         "title": "GetClusteringJobConfigsResponse",
-        "description": "Response to get clustering job configs."
+        "description": "A collection of Insights job configurations."
       },
       "GetDatasetsSelect": {
         "type": "string",
@@ -57664,7 +57706,7 @@
           "description"
         ],
         "title": "GetRunClusterResponse",
-        "description": "Response to get a specific cluster from a specific cluster job."
+        "description": "A cluster in an Insights report."
       },
       "GetRunClusteringJobResponse": {
         "properties": {
@@ -57786,7 +57828,7 @@
           "clusters"
         ],
         "title": "GetRunClusteringJobResponse",
-        "description": "Response to get a specific cluster job for a session."
+        "description": "An Insights job and the report it produced."
       },
       "GetRunClusteringJobsResponse": {
         "properties": {
@@ -57803,7 +57845,7 @@
           "clustering_jobs"
         ],
         "title": "GetRunClusteringJobsResponse",
-        "description": "Response to get all cluster jobs for a session."
+        "description": "A collection of Insights jobs."
       },
       "GranularUsageDimensions": {
         "properties": {
@@ -58587,7 +58629,7 @@
           "highlight_reason"
         ],
         "title": "HighlightedRun",
-        "description": "A trace highlighted in an insights report summary. Up to 10 per insights job."
+        "description": "A trace highlighted in an Insights report summary. Up to 10 per report."
       },
       "HostProjectChartMetric": {
         "type": "string",
@@ -58855,7 +58897,7 @@
         },
         "type": "object",
         "title": "InsightsSummary",
-        "description": "High level summary of an insights job that pulls out patterns and specific traces."
+        "description": "High-level summary of an Insights report with patterns and specific traces."
       },
       "InternalSecretsResponse": {
         "properties": {
@@ -66327,7 +66369,7 @@
           "created_at"
         ],
         "title": "RunClusteringJobPydantic",
-        "description": "Session cluster job"
+        "description": "An Insights job."
       },
       "RunDateOrder": {
         "type": "string",
@@ -72782,7 +72824,7 @@
           "model"
         ],
         "title": "SavedRunClusteringJobRequest",
-        "description": "Request to create a run clustering job."
+        "description": "Saved configuration for an Insights job."
       },
       "SecretKey": {
         "properties": {
@@ -75723,7 +75765,7 @@
         },
         "type": "object",
         "title": "UpdateClusteringJobConfigRequest",
-        "description": "Request to update a clustering job config."
+        "description": "Request to update an Insights job configuration."
       },
       "UpdateFeedbackConfigSchema": {
         "properties": {
@@ -75874,7 +75916,7 @@
           "name"
         ],
         "title": "UpdateRunClusteringJobRequest",
-        "description": "Request to update a session cluster job."
+        "description": "Request to update an Insights job."
       },
       "UpdateRunClusteringJobResponse": {
         "properties": {
@@ -75893,7 +75935,7 @@
           "status"
         ],
         "title": "UpdateRunClusteringJobResponse",
-        "description": "Response to update a session cluster job."
+        "description": "Response to updating an Insights job."
       },
       "UpsertTTLSettingsRequest": {
         "properties": {
@@ -77552,8 +77594,8 @@
             "type": "boolean"
           },
           "byoc_external_id": {
-            "description": "ByocExternalID is the organization's assigned AWS external ID, stored only in org config.",
             "readOnly": true,
+            "description": "ByocExternalID is the organization's assigned AWS external ID, stored only in org config.",
             "anyOf": [
               {
                 "type": "string"
@@ -78116,6 +78158,11 @@
           "alerts:update",
           "alerts:delete",
           "alerts:read",
+          "agent-auth-connections:read",
+          "agent-auth-connections:create",
+          "agent-auth-connections:update",
+          "agent-auth-connections:delete",
+          "agent-auth-connections:revoke",
           "bulk-exports:read",
           "bulk-exports:manage",
           "mcp-servers:create",
@@ -78217,6 +78264,11 @@
           "AlertsUpdate",
           "AlertsDelete",
           "AlertsRead",
+          "AgentAuthConnectionsRead",
+          "AgentAuthConnectionsCreate",
+          "AgentAuthConnectionsUpdate",
+          "AgentAuthConnectionsDelete",
+          "AgentAuthConnectionsRevoke",
           "BulkExportsRead",
           "BulkExportsManage",
           "McpServersCreate",
