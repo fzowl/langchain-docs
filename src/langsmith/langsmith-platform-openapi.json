@@ -8978,8 +8978,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -26235,8 +26235,8 @@
             "schema": {
               "maximum": 100,
               "default": 20,
-              "type": "integer",
               "minimum": 1,
+              "type": "integer",
               "title": "Limit"
             }
           },
@@ -26246,8 +26246,8 @@
             "in": "query",
             "schema": {
               "default": 0,
-              "type": "integer",
               "minimum": 0,
+              "type": "integer",
               "title": "Offset"
             }
           },
@@ -27596,8 +27596,8 @@
             "name": "min_start_time",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Min Start Time"
             }
           },
@@ -27606,8 +27606,8 @@
             "name": "max_start_time",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Max Start Time"
             }
           },
@@ -27616,11 +27616,11 @@
             "name": "direction",
             "in": "query",
             "schema": {
+              "default": "forward",
               "enum": [
                 "forward",
                 "backward"
               ],
-              "default": "forward",
               "type": "string",
               "title": "Direction"
             }
@@ -27833,8 +27833,8 @@
             "name": "min_start_time",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Min Start Time"
             }
           },
@@ -27843,8 +27843,8 @@
             "name": "max_start_time",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Max Start Time"
             }
           }
@@ -28499,8 +28499,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -28618,8 +28618,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -30275,8 +30275,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -30365,8 +30365,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -30448,8 +30448,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -31020,8 +31020,8 @@
             "name": "trace_id",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "uuid",
+              "type": "string",
               "title": "Trace Id"
             }
           },
@@ -34292,8 +34292,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -36060,8 +36060,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -36133,8 +36133,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36160,8 +36160,8 @@
             "name": "trace_id",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "uuid",
+              "type": "string",
               "title": "Trace Id"
             }
           }
@@ -36235,8 +36235,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36245,8 +36245,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36255,8 +36255,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Start Time"
             }
           },
@@ -36353,8 +36353,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36447,8 +36447,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36571,8 +36571,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36581,8 +36581,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36683,8 +36683,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36693,8 +36693,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36703,8 +36703,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Start Time"
             }
           },
@@ -36829,8 +36829,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -37091,8 +37091,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -37101,8 +37101,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "uuid",
+              "type": "string",
               "title": "Project Id"
             }
           },
@@ -37173,8 +37173,8 @@
             "name": "start_time",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Start Time"
             }
           }
@@ -37308,8 +37308,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -37423,8 +37423,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -37536,8 +37536,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -38423,6 +38423,211 @@
             }
           }
         }
+      }
+    },
+    "/api/v2/sandboxes/boxes/{name}/service-urls": {
+      "get": {
+        "description": "Returns one entry per port the sandbox is currently reachable on, so a caller can see what is shared before turning it off. Expired token grants are omitted.\nCursors are opaque and only valid on this endpoint; do not parse or construct one.",
+        "tags": [
+          "sandboxes"
+        ],
+        "summary": "List a sandbox's shared service urls",
+        "parameters": [
+          {
+            "description": "Sandbox name or ID",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Number of results per page",
+            "name": "page_size",
+            "in": "query",
+            "schema": {
+              "default": 20,
+              "type": "integer",
+              "title": "Page Size"
+            }
+          },
+          {
+            "description": "Opaque pagination cursor from a prior response's next_cursor",
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "title": "Cursor"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/sandboxes.ServiceURLGrantListResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "invalid page_size or cursor",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/shared.ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "missing or invalid authentication",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/shared.ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "forbidden (insufficient permission)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/shared.ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "sandbox not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/shared.ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/shared.ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "API Key": [],
+            "Tenant ID": []
+          },
+          {
+            "Bearer Auth": [],
+            "Tenant ID": []
+          }
+        ],
+        "x-public": true
+      },
+      "delete": {
+        "description": "Removes the sharing grant for one port, or for every port when port is omitted. A LangSmith login URL stops working immediately. A previously minted service token is not revoked and stays valid until it expires, but no new one can be issued from the removed grant.",
+        "tags": [
+          "sandboxes"
+        ],
+        "summary": "Stop sharing a sandbox service URL",
+        "parameters": [
+          {
+            "description": "Sandbox name or ID",
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Port to stop sharing. Omit to stop sharing every port.",
+            "name": "port",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "title": "Port"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "deleted"
+          },
+          "400": {
+            "description": "bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/shared.ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "missing or invalid authentication",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/shared.ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "forbidden (insufficient permission)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/shared.ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "sandbox not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/shared.ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/shared.ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "API Key": [],
+            "Tenant ID": []
+          },
+          {
+            "Bearer Auth": [],
+            "Tenant ID": []
+          }
+        ],
+        "x-public": true
       }
     },
     "/api/v2/sandboxes/boxes/{name}/snapshot": {
@@ -39771,8 +39976,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Start Time"
             }
           },
@@ -39782,8 +39987,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "End Time"
             }
           },
@@ -39821,8 +40026,8 @@
             "schema": {
               "maximum": 100,
               "default": 20,
-              "type": "integer",
               "minimum": 1,
+              "type": "integer",
               "title": "Page Size"
             }
           },
@@ -39831,11 +40036,11 @@
             "name": "granularity",
             "in": "query",
             "schema": {
+              "default": "HOUR",
               "enum": [
                 "HOUR",
                 "RESOURCE"
               ],
-              "default": "HOUR",
               "type": "string",
               "title": "Granularity"
             }
@@ -41201,8 +41406,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "uuid",
+              "type": "string",
               "title": "Project Id"
             }
           }
@@ -41406,8 +41611,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "uuid",
+              "type": "string",
               "title": "Project Id"
             }
           }
@@ -41541,8 +41746,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "uuid",
+              "type": "string",
               "title": "Session Id"
             }
           }
@@ -41695,8 +41900,8 @@
             "schema": {
               "maximum": 100,
               "default": 20,
-              "type": "integer",
               "minimum": 1,
+              "type": "integer",
               "title": "Page Size"
             }
           },
@@ -41706,8 +41911,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "uuid",
+              "type": "string",
               "title": "Project Id"
             }
           },
@@ -42054,8 +42259,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -42072,8 +42277,8 @@
             "name": "max_start_time",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Max Start Time"
             }
           },
@@ -42082,8 +42287,8 @@
             "name": "min_start_time",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Min Start Time"
             }
           },
@@ -42093,8 +42298,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "uuid",
+              "type": "string",
               "title": "Project Id"
             }
           },
@@ -42380,8 +42585,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -42479,8 +42684,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -42613,8 +42818,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -42624,8 +42829,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -42720,8 +42925,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -42731,8 +42936,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -42820,8 +43025,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -42831,8 +43036,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -44101,8 +44306,8 @@
             "schema": {
               "maximum": 100,
               "default": 50,
-              "type": "integer",
               "minimum": 1,
+              "type": "integer",
               "title": "Limit"
             }
           },
@@ -44111,8 +44316,8 @@
             "in": "query",
             "schema": {
               "default": 0,
-              "type": "integer",
               "minimum": 0,
+              "type": "integer",
               "title": "Offset"
             }
           }
@@ -44971,8 +45176,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -45077,8 +45282,8 @@
             "schema": {
               "maximum": 100,
               "default": 20,
-              "type": "integer",
               "minimum": 1,
+              "type": "integer",
               "title": "Page Size"
             }
           },
@@ -47529,6 +47734,7 @@
           "delete_sandbox_policy",
           "create_computer_environment",
           "update_computer_environment",
+          "archive_computer_environment",
           "list_sandbox_claims",
           "get_sandbox_claim",
           "get_sandbox_claim_status",
@@ -77628,8 +77834,8 @@
             "type": "boolean"
           },
           "byoc_external_id": {
-            "readOnly": true,
             "description": "ByocExternalID is the organization's assigned AWS external ID, stored only in org config.",
+            "readOnly": true,
             "anyOf": [
               {
                 "type": "string"
@@ -79178,6 +79384,10 @@
           },
           "managed_code_evaluator_settings": {
             "$ref": "#/components/schemas/evaluators.ManagedCodeEvaluatorSettings"
+          },
+          "require_attachments": {
+            "description": "RequireAttachments opts the evaluator into selecting/presigning run\nattachments (s3_urls) at evaluation time. Default false.",
+            "type": "boolean"
           }
         }
       },
@@ -79209,6 +79419,10 @@
           },
           "managed_code_evaluator_settings": {
             "$ref": "#/components/schemas/evaluators.ManagedCodeEvaluatorSettings"
+          },
+          "require_attachments": {
+            "description": "RequireAttachments opts the evaluator into selecting/presigning run\nattachments (s3_urls) at evaluation time. Default false.",
+            "type": "boolean"
           }
         }
       },
@@ -79575,6 +79789,10 @@
           },
           "managed_code_evaluator_settings": {
             "$ref": "#/components/schemas/evaluators.ManagedCodeEvaluatorSettings"
+          },
+          "require_attachments": {
+            "description": "RequireAttachments is fetch-time config: updating it does not rebuild\nthe sandbox snapshot.",
+            "type": "boolean"
           }
         }
       },
@@ -84173,6 +84391,69 @@
                 "type": "null"
               }
             ]
+          }
+        }
+      },
+      "sandboxes.ServiceURLGrantListResponse": {
+        "type": "object",
+        "required": [
+          "items",
+          "next_cursor"
+        ],
+        "properties": {
+          "items": {
+            "description": "This page of the ports the sandbox is shared on.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/sandboxes.ServiceURLGrantResponse"
+            }
+          },
+          "next_cursor": {
+            "description": "Cursor for the next page, or null on the last page. A non-null value is\nthe only signal that more pages exist. Treat it as opaque.",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "sandboxes.ServiceURLGrantResponse": {
+        "type": "object",
+        "required": [
+          "access",
+          "created_at",
+          "port"
+        ],
+        "properties": {
+          "access": {
+            "description": "How the port is shared: \"token\" for a minted service token, or\n\"restricted\"/\"workspace\" for LangSmith login.",
+            "type": "string",
+            "enum": [
+              "token",
+              "restricted",
+              "workspace"
+            ]
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_by": {
+            "description": "The LangSmith user who first shared this port, when known.",
+            "type": "string",
+            "format": "uuid"
+          },
+          "expires_at": {
+            "description": "When the share expires. Set only for \"token\"; a login grant does not expire.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "port": {
+            "type": "integer"
           }
         }
       },
