@@ -26283,10 +26283,10 @@
             "name": "limit",
             "in": "query",
             "schema": {
-              "minimum": 1,
-              "maximum": 100,
               "default": 20,
+              "minimum": 1,
               "type": "integer",
+              "maximum": 100,
               "title": "Limit"
             }
           },
@@ -26295,8 +26295,8 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "minimum": 0,
               "default": 0,
+              "minimum": 0,
               "type": "integer",
               "title": "Offset"
             }
@@ -36978,7 +36978,7 @@
         "summary": "Query runs",
         "parameters": [
           {
-            "description": "application/json",
+            "description": "application/json or text/event-stream",
             "name": "Accept",
             "in": "header",
             "schema": {
@@ -37066,7 +37066,7 @@
             }
           },
           "501": {
-            "description": "V2 filter syntax is unavailable for this deployment; use legacy function-style filters or set SMITHDB_QUERY_ENABLED=true",
+            "description": "The requested filter syntax is unavailable for this deployment",
             "content": {
               "application/json": {
                 "schema": {
@@ -37733,6 +37733,20 @@
             "schema": {
               "type": "string",
               "title": "Status"
+            }
+          },
+          {
+            "description": "Filter by workspace resource tag value IDs; all must match",
+            "name": "tag_value_id",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "title": "Tag Value Id"
             }
           },
           {
@@ -40074,10 +40088,10 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "minimum": 1,
-              "maximum": 100,
               "default": 20,
+              "minimum": 1,
               "type": "integer",
+              "maximum": 100,
               "title": "Page Size"
             }
           },
@@ -41948,10 +41962,10 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "minimum": 1,
-              "maximum": 100,
               "default": 20,
+              "minimum": 1,
               "type": "integer",
+              "maximum": 100,
               "title": "Page Size"
             }
           },
@@ -44354,10 +44368,10 @@
             "name": "limit",
             "in": "query",
             "schema": {
-              "minimum": 1,
-              "maximum": 100,
               "default": 50,
+              "minimum": 1,
               "type": "integer",
+              "maximum": 100,
               "title": "Limit"
             }
           },
@@ -44365,8 +44379,8 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "minimum": 0,
               "default": 0,
+              "minimum": 0,
               "type": "integer",
               "title": "Offset"
             }
@@ -45330,10 +45344,10 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "minimum": 1,
-              "maximum": 100,
               "default": 20,
+              "minimum": 1,
               "type": "integer",
+              "maximum": 100,
               "title": "Page Size"
             }
           },
@@ -47730,6 +47744,9 @@
           "update_mcp_server",
           "delete_mcp_server",
           "register_mcp_server_oauth",
+          "create_mcp_gateway",
+          "update_mcp_gateway",
+          "delete_mcp_gateway",
           "create_credential",
           "read_credential_secret",
           "read_credential_oauth2",
@@ -47999,6 +48016,9 @@
           "update_custom_app_share",
           "update_custom_app_claim",
           "download_custom_app_source",
+          "create_custom_app_editing_credential",
+          "create_custom_app_editing_sandbox",
+          "delete_custom_app_editing_sandbox",
           "test_op_generic"
         ],
         "title": "AuditLogOperation",
@@ -61760,6 +61780,23 @@
             "type": "boolean",
             "title": "Managed Deep Agents Enabled",
             "default": false
+          },
+          "lmt_enabled": {
+            "type": "boolean",
+            "title": "Lmt Enabled",
+            "default": false
+          },
+          "lmt_lsu_spend_limit_monthly": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lmt Lsu Spend Limit Monthly",
+            "description": "Caps an org's monthly Managed Tools LSU spend, resolved from Metronome custom fields. Unset or zero blocks usage. Negative means unlimited; positive values cap monthly LSU usage. Per-org only, with no environment default."
           },
           "is_anonymous": {
             "anyOf": [
@@ -78162,6 +78199,21 @@
             "description": "LLMGatewayEnabled indicates whether this org can use the LLM Gateway\n(admin UI and gateway policies).",
             "type": "boolean"
           },
+          "lmt_enabled": {
+            "description": "LMTEnabled indicates whether this org's plan entitles it to use LangSmith\nManaged Tools. Set by Metronome entitlement. Product code does not\nenforce this yet; the field exists so Metronome can wire Plus/Enterprise.",
+            "type": "boolean"
+          },
+          "lmt_lsu_spend_limit_monthly": {
+            "description": "LMTLSUSpendLimitMonthly caps an org's monthly Managed Tools LSU spend,\nresolved from Metronome custom fields. Unset or zero blocks usage.\nNegative means unlimited; positive values cap monthly LSU usage.\nPer-org only, with no environment default.",
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "max_agent_builder_assistants": {
             "description": "MaxAgentBuilderAssistants is the maximum number of Agent Builder assistants allowed for this org.",
             "type": "integer"
@@ -78905,6 +78957,10 @@
               "$ref": "#/components/schemas/aws.ResourceTag"
             }
           },
+          "byoiam_enabled": {
+            "description": "Use customer-managed IAM roles created by the LangSmith BYOIAM Terraform module.",
+            "type": "boolean"
+          },
           "byovpc_id": {
             "description": "The ID of the customer-managed VPC to deploy into when deploying in BYOVPC mode.",
             "type": "string"
@@ -78929,6 +78985,10 @@
             "items": {
               "type": "string"
             }
+          },
+          "eks_api_privatelink_disabled": {
+            "description": "Use a public EKS API endpoint restricted to LangSmith control-plane egress IPs instead of creating a managed PrivateLink endpoint service. Defaults to false.",
+            "type": "boolean"
           },
           "name": {
             "type": "string"
@@ -79006,6 +79066,52 @@
           }
         }
       },
+      "data_planes.DataPlaneFleetOIDCSettings": {
+        "type": "object",
+        "required": [
+          "audience",
+          "email_claim",
+          "groups_claim",
+          "is_enabled",
+          "issuer_url",
+          "provider",
+          "subject_claim",
+          "tenant_claim",
+          "tenant_mappings"
+        ],
+        "properties": {
+          "audience": {
+            "type": "string"
+          },
+          "email_claim": {
+            "type": "string"
+          },
+          "groups_claim": {
+            "type": "string"
+          },
+          "is_enabled": {
+            "type": "boolean"
+          },
+          "issuer_url": {
+            "type": "string"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "subject_claim": {
+            "type": "string"
+          },
+          "tenant_claim": {
+            "type": "string"
+          },
+          "tenant_mappings": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      },
       "data_planes.DataPlaneTTLSettings": {
         "type": "object",
         "required": [
@@ -79078,6 +79184,9 @@
           },
           "firewall": {
             "$ref": "#/components/schemas/data_planes.DataPlaneFirewallSettings"
+          },
+          "fleet_oidc": {
+            "$ref": "#/components/schemas/data_planes.DataPlaneFleetOIDCSettings"
           },
           "id": {
             "type": "string"
@@ -79167,11 +79276,49 @@
           }
         }
       },
+      "data_planes.UpdateDataPlaneFleetOIDCSettings": {
+        "type": "object",
+        "properties": {
+          "audience": {
+            "type": "string"
+          },
+          "email_claim": {
+            "type": "string"
+          },
+          "groups_claim": {
+            "type": "string"
+          },
+          "is_enabled": {
+            "type": "boolean"
+          },
+          "issuer_url": {
+            "type": "string"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "subject_claim": {
+            "type": "string"
+          },
+          "tenant_claim": {
+            "type": "string"
+          },
+          "tenant_mappings": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      },
       "data_planes.UpdateDataPlaneRequest": {
         "type": "object",
         "properties": {
           "firewall": {
             "$ref": "#/components/schemas/data_planes.UpdateDataPlaneFirewallSettings"
+          },
+          "fleet_oidc": {
+            "$ref": "#/components/schemas/data_planes.UpdateDataPlaneFleetOIDCSettings"
           },
           "maintenance_window": {
             "description": "MaintenanceWindow is the two-hour weekly maintenance window in UTC.",
@@ -79522,7 +79669,7 @@
             "type": "string"
           },
           "managed_code_evaluator_key": {
-            "type": "string"
+            "$ref": "#/components/schemas/evaluators.ManagedCodeEvaluatorKey"
           },
           "managed_code_evaluator_settings": {
             "$ref": "#/components/schemas/evaluators.ManagedCodeEvaluatorSettings"
@@ -79557,7 +79704,7 @@
             "type": "string"
           },
           "managed_code_evaluator_key": {
-            "type": "string"
+            "$ref": "#/components/schemas/evaluators.ManagedCodeEvaluatorKey"
           },
           "managed_code_evaluator_settings": {
             "$ref": "#/components/schemas/evaluators.ManagedCodeEvaluatorSettings"
@@ -79810,6 +79957,15 @@
             "type": "integer"
           }
         }
+      },
+      "evaluators.ManagedCodeEvaluatorKey": {
+        "type": "string",
+        "enum": [
+          "voice_metrics"
+        ],
+        "x-enum-varnames": [
+          "ManagedCodeEvaluatorKeyVoiceMetrics"
+        ]
       },
       "evaluators.ManagedCodeEvaluatorMetricSetting": {
         "type": "object",
