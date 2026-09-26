@@ -26333,10 +26333,10 @@
             "name": "limit",
             "in": "query",
             "schema": {
-              "minimum": 1,
-              "type": "integer",
               "maximum": 100,
+              "type": "integer",
               "default": 20,
+              "minimum": 1,
               "title": "Limit"
             }
           },
@@ -26345,9 +26345,9 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "minimum": 0,
               "type": "integer",
               "default": 0,
+              "minimum": 0,
               "title": "Offset"
             }
           },
@@ -28872,10 +28872,10 @@
             "style": "form",
             "explode": false,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Tag Value Id"
             }
           },
@@ -28895,10 +28895,10 @@
             "style": "form",
             "explode": false,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Resource Id"
             }
           },
@@ -29112,10 +29112,10 @@
             "style": "form",
             "explode": false,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Evaluator Ids"
             }
           },
@@ -29246,10 +29246,10 @@
             "style": "form",
             "explode": false,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Resource Id"
             }
           },
@@ -29278,10 +29278,10 @@
             "style": "form",
             "explode": false,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Tag Value Id"
             }
           },
@@ -31074,6 +31074,7 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "enum": [
                   0,
@@ -31083,7 +31084,6 @@
                 ],
                 "type": "integer"
               },
-              "type": "array",
               "title": "Severity Exact"
             }
           },
@@ -31094,6 +31094,7 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "enum": [
                   "fixing",
@@ -31102,7 +31103,6 @@
                 ],
                 "type": "string"
               },
-              "type": "array",
               "title": "Activity"
             }
           },
@@ -33499,10 +33499,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Name Like"
             }
           },
@@ -33513,10 +33513,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Email Like"
             }
           },
@@ -33527,10 +33527,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Workspace Name Like"
             }
           },
@@ -33541,10 +33541,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Organization Role Like"
             }
           },
@@ -33555,10 +33555,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Workspace Role Like"
             }
           }
@@ -33781,10 +33781,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Access Policy Ids"
             }
           }
@@ -36368,10 +36368,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           }
@@ -36465,10 +36465,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           }
@@ -36559,10 +36559,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           },
@@ -36693,10 +36693,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           }
@@ -36816,10 +36816,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           }
@@ -37213,6 +37213,7 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "enum": [
                   "ID",
@@ -37264,7 +37265,6 @@
                 ],
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           },
@@ -37792,10 +37792,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Tag Value Id"
             }
           },
@@ -37815,10 +37815,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Label"
             }
           },
@@ -39610,10 +39610,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Label"
             }
           },
@@ -40126,10 +40126,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Resource Ids"
             }
           },
@@ -40138,10 +40138,10 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "minimum": 1,
-              "type": "integer",
               "maximum": 100,
+              "type": "integer",
               "default": 20,
+              "minimum": 1,
               "title": "Page Size"
             }
           },
@@ -41828,6 +41828,7 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "enum": [
                   "TURNS",
@@ -41850,7 +41851,6 @@
                 ],
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           },
@@ -42012,10 +42012,10 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "minimum": 1,
-              "type": "integer",
               "maximum": 100,
+              "type": "integer",
               "default": 20,
+              "minimum": 1,
               "title": "Page Size"
             }
           },
@@ -42041,6 +42041,7 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "enum": [
                   "THREAD_ID",
@@ -42071,7 +42072,6 @@
                 ],
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           },
@@ -42424,6 +42424,7 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "enum": [
                   "ID",
@@ -42475,7 +42476,6 @@
                 ],
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           }
@@ -44493,10 +44493,10 @@
             "name": "limit",
             "in": "query",
             "schema": {
-              "minimum": 1,
-              "type": "integer",
               "maximum": 100,
+              "type": "integer",
               "default": 50,
+              "minimum": 1,
               "title": "Limit"
             }
           },
@@ -44504,9 +44504,9 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "minimum": 0,
               "type": "integer",
               "default": 0,
+              "minimum": 0,
               "title": "Offset"
             }
           }
@@ -45469,10 +45469,10 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "minimum": 1,
-              "type": "integer",
               "maximum": 100,
+              "type": "integer",
               "default": 20,
+              "minimum": 1,
               "title": "Page Size"
             }
           },
