@@ -8978,8 +8978,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -11024,7 +11024,7 @@
           "feedback"
         ],
         "summary": "Create feedback",
-        "description": "Create a new feedback.\n\n`session_id` is required: it identifies the tracing project the feedback\nbelongs to.",
+        "description": "Create a new feedback.\n\n`session_id` identifies the tracing project the feedback belongs to. It is\nrequired unless the feedback is addressed by `agent_id` and\n`agent_environment`, which name that project through an Agent environment\nthat already exists.",
         "operationId": "create_feedback_api_v1_feedback_post",
         "security": [
           {
@@ -11057,6 +11057,15 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "agent_id or agent_environment is invalid, or no Agent environment matches them. Feedback does not create one."
+          },
+          "403": {
+            "description": "The feedback key is reserved, or Agent addressing is not enabled for this workspace."
+          },
+          "409": {
+            "description": "The addressed Agent is archived, or its environment is bound to a tracing project that is not Agent-owned."
           },
           "422": {
             "description": "Validation Error",
@@ -20971,7 +20980,7 @@
           "orgs"
         ],
         "summary": "Update org service key",
-        "description": "Update an API key's role(s) in place without rotating the key.\n\nOrganization Operators cannot assign the Organization Admin role or change\na key that already holds it, and no key can change its own roles. Applies\nto both org-scoped and workspace-scoped keys.",
+        "description": "Update an API key's role(s) in place without rotating the key.\n\nOrganization Operators cannot assign the Organization Admin role or change\na key that already holds it, and no key can change its own roles.\nWorkspace-scoped keys also require key-management permission in every\nworkspace they cover. Applies to both org-scoped and workspace-scoped keys.",
         "operationId": "update_org_service_key_api_v1_orgs_current_service_keys__api_key_id__patch",
         "security": [
           {
@@ -26333,10 +26342,10 @@
             "name": "limit",
             "in": "query",
             "schema": {
-              "default": 20,
-              "minimum": 1,
-              "type": "integer",
               "maximum": 100,
+              "minimum": 1,
+              "default": 20,
+              "type": "integer",
               "title": "Limit"
             }
           },
@@ -26345,8 +26354,8 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "default": 0,
               "minimum": 0,
+              "default": 0,
               "type": "integer",
               "title": "Offset"
             }
@@ -27650,12 +27659,12 @@
             "in": "query",
             "required": true,
             "schema": {
+              "type": "string",
               "enum": [
                 "needs_my_review",
                 "needs_others_review",
                 "archived"
               ],
-              "type": "string",
               "title": "Status"
             }
           },
@@ -27683,11 +27692,11 @@
             "name": "item_type",
             "in": "query",
             "schema": {
+              "type": "string",
               "enum": [
                 "RUN",
                 "THREAD"
               ],
-              "type": "string",
               "title": "Item Type"
             }
           },
@@ -27696,8 +27705,8 @@
             "name": "min_start_time",
             "in": "query",
             "schema": {
-              "format": "date-time",
               "type": "string",
+              "format": "date-time",
               "title": "Min Start Time"
             }
           },
@@ -27706,8 +27715,8 @@
             "name": "max_start_time",
             "in": "query",
             "schema": {
-              "format": "date-time",
               "type": "string",
+              "format": "date-time",
               "title": "Max Start Time"
             }
           },
@@ -27717,11 +27726,11 @@
             "in": "query",
             "schema": {
               "default": "forward",
+              "type": "string",
               "enum": [
                 "forward",
                 "backward"
               ],
-              "type": "string",
               "title": "Direction"
             }
           }
@@ -27933,8 +27942,8 @@
             "name": "min_start_time",
             "in": "query",
             "schema": {
-              "format": "date-time",
               "type": "string",
+              "format": "date-time",
               "title": "Min Start Time"
             }
           },
@@ -27943,8 +27952,8 @@
             "name": "max_start_time",
             "in": "query",
             "schema": {
-              "format": "date-time",
               "type": "string",
+              "format": "date-time",
               "title": "Max Start Time"
             }
           }
@@ -28599,8 +28608,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -28718,8 +28727,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -30375,8 +30384,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -30465,8 +30474,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -30548,8 +30557,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -30809,11 +30818,11 @@
             "name": "repo_type",
             "in": "query",
             "schema": {
+              "type": "string",
               "enum": [
                 "agent",
                 "skill"
               ],
-              "type": "string",
               "title": "Repo Type"
             }
           }
@@ -31041,6 +31050,7 @@
             "name": "status",
             "in": "query",
             "schema": {
+              "type": "string",
               "enum": [
                 "open",
                 "fixing",
@@ -31048,7 +31058,6 @@
                 "completed",
                 "ignored"
               ],
-              "type": "string",
               "title": "Status"
             }
           },
@@ -31057,13 +31066,13 @@
             "name": "severity",
             "in": "query",
             "schema": {
+              "type": "integer",
               "enum": [
                 0,
                 1,
                 2,
                 3
               ],
-              "type": "integer",
               "title": "Severity"
             }
           },
@@ -31120,8 +31129,8 @@
             "name": "trace_id",
             "in": "query",
             "schema": {
-              "format": "uuid",
               "type": "string",
+              "format": "uuid",
               "title": "Trace Id"
             }
           },
@@ -31139,6 +31148,7 @@
             "name": "sort_by",
             "in": "query",
             "schema": {
+              "type": "string",
               "enum": [
                 "default",
                 "created_at",
@@ -31148,7 +31158,6 @@
                 "trace_count",
                 "severity"
               ],
-              "type": "string",
               "title": "Sort By"
             }
           },
@@ -34392,8 +34401,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -36160,8 +36169,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -36233,8 +36242,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -36260,8 +36269,8 @@
             "name": "trace_id",
             "in": "query",
             "schema": {
-              "format": "uuid",
               "type": "string",
+              "format": "uuid",
               "title": "Trace Id"
             }
           }
@@ -36335,8 +36344,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -36345,8 +36354,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -36355,8 +36364,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "format": "date-time",
               "type": "string",
+              "format": "date-time",
               "title": "Start Time"
             }
           },
@@ -36453,8 +36462,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -36547,8 +36556,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -36671,8 +36680,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -36681,8 +36690,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -36783,8 +36792,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -36793,8 +36802,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -36803,8 +36812,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "format": "date-time",
               "type": "string",
+              "format": "date-time",
               "title": "Start Time"
             }
           },
@@ -36929,8 +36938,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -37191,8 +37200,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -37201,8 +37210,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "format": "uuid",
               "type": "string",
+              "format": "uuid",
               "title": "Project Id"
             }
           },
@@ -37273,8 +37282,8 @@
             "name": "start_time",
             "in": "query",
             "schema": {
-              "format": "date-time",
               "type": "string",
+              "format": "date-time",
               "title": "Start Time"
             }
           }
@@ -37408,8 +37417,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -37523,8 +37532,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -37636,8 +37645,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -40090,8 +40099,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "format": "date-time",
               "type": "string",
+              "format": "date-time",
               "title": "Start Time"
             }
           },
@@ -40101,8 +40110,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "format": "date-time",
               "type": "string",
+              "format": "date-time",
               "title": "End Time"
             }
           },
@@ -40111,11 +40120,11 @@
             "name": "resource_type",
             "in": "query",
             "schema": {
+              "type": "string",
               "enum": [
                 "SANDBOX",
                 "SNAPSHOT"
               ],
-              "type": "string",
               "title": "Resource Type"
             }
           },
@@ -40138,10 +40147,10 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "default": 20,
-              "minimum": 1,
-              "type": "integer",
               "maximum": 100,
+              "minimum": 1,
+              "default": 20,
+              "type": "integer",
               "title": "Page Size"
             }
           },
@@ -40151,11 +40160,11 @@
             "in": "query",
             "schema": {
               "default": "HOUR",
+              "type": "string",
               "enum": [
                 "HOUR",
                 "RESOURCE"
               ],
-              "type": "string",
               "title": "Granularity"
             }
           },
@@ -41520,8 +41529,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "format": "uuid",
               "type": "string",
+              "format": "uuid",
               "title": "Project Id"
             }
           }
@@ -41725,8 +41734,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "format": "uuid",
               "type": "string",
+              "format": "uuid",
               "title": "Project Id"
             }
           }
@@ -41860,8 +41869,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "format": "uuid",
               "type": "string",
+              "format": "uuid",
               "title": "Session Id"
             }
           }
@@ -42012,10 +42021,10 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "default": 20,
-              "minimum": 1,
-              "type": "integer",
               "maximum": 100,
+              "minimum": 1,
+              "default": 20,
+              "type": "integer",
               "title": "Page Size"
             }
           },
@@ -42025,8 +42034,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "format": "uuid",
               "type": "string",
+              "format": "uuid",
               "title": "Project Id"
             }
           },
@@ -42373,8 +42382,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -42391,8 +42400,8 @@
             "name": "max_start_time",
             "in": "query",
             "schema": {
-              "format": "date-time",
               "type": "string",
+              "format": "date-time",
               "title": "Max Start Time"
             }
           },
@@ -42401,8 +42410,8 @@
             "name": "min_start_time",
             "in": "query",
             "schema": {
-              "format": "date-time",
               "type": "string",
+              "format": "date-time",
               "title": "Min Start Time"
             }
           },
@@ -42412,8 +42421,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "format": "uuid",
               "type": "string",
+              "format": "uuid",
               "title": "Project Id"
             }
           },
@@ -42699,8 +42708,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -42798,8 +42807,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -42932,8 +42941,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -42943,8 +42952,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -43039,8 +43048,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -43050,8 +43059,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -43139,8 +43148,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           },
           {
@@ -43150,8 +43159,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -44192,8 +44201,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -44265,8 +44274,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -44383,8 +44392,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -44493,10 +44502,10 @@
             "name": "limit",
             "in": "query",
             "schema": {
-              "default": 50,
-              "minimum": 1,
-              "type": "integer",
               "maximum": 100,
+              "minimum": 1,
+              "default": 50,
+              "type": "integer",
               "title": "Limit"
             }
           },
@@ -44504,8 +44513,8 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "default": 0,
               "minimum": 0,
+              "default": 0,
               "type": "integer",
               "title": "Offset"
             }
@@ -45365,8 +45374,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "format": "uuid",
-              "type": "string"
+              "type": "string",
+              "format": "uuid"
             }
           }
         ],
@@ -45469,10 +45478,10 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "default": 20,
-              "minimum": 1,
-              "type": "integer",
               "maximum": 100,
+              "minimum": 1,
+              "default": 20,
+              "type": "integer",
               "title": "Page Size"
             }
           },
@@ -48113,6 +48122,8 @@
           "query_thread_stats",
           "query_thread_traces",
           "query_threads",
+          "list_github_thread_outcomes",
+          "query_github_thread_outcomes",
           "list_pairwise_queues",
           "get_pairwise_queue",
           "list_pairwise_entries",
@@ -50776,13 +50787,22 @@
             },
             "type": "array",
             "title": "Failed"
+          },
+          "rejected": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "title": "Rejected"
           }
         },
         "type": "object",
         "required": [
           "migrated",
           "skipped",
-          "failed"
+          "failed",
+          "rejected"
         ],
         "title": "CompositeMigrationResult",
         "description": "Per-id outcome of a composite migration batch."
@@ -56541,7 +56561,37 @@
               }
             ],
             "title": "Session Id",
-            "description": "Required. The ID of the tracing project (session) the feedback belongs to."
+            "description": "Required unless the feedback is addressed by agent_id and agent_environment. The ID of the tracing project (session) the feedback belongs to."
+          },
+          "agent_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Agent Id",
+            "description": "Experimental. Only supported in workspaces where Agent addressing is enabled; other workspaces get a 403. The Agent's id, not a UUID: 1 to 63 lowercase ASCII letters, digits, or hyphens, starting with a letter and ending with a letter or digit (e.g. support-agent). Addresses the tracing project through an Agent instead of session_id. Sent together with agent_environment, and never alongside session_id. The Agent and the environment must already exist; sending feedback does not create them."
+          },
+          "agent_environment": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "LOCAL",
+                  "DEVELOPMENT",
+                  "STAGING",
+                  "PRODUCTION"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Agent Environment",
+            "description": "Experimental. Only supported in workspaces where Agent addressing is enabled; other workspaces get a 403. The Agent environment whose tracing project the feedback belongs to. Matched case-insensitively. Sent together with agent_id."
           },
           "trace_id": {
             "anyOf": [
@@ -62692,7 +62742,8 @@
           "ORGANIZATION_OPERATOR",
           "ORGANIZATION_USER",
           "ORGANIZATION_VIEWER",
-          "ORGANIZATION_RESTRICTED"
+          "ORGANIZATION_RESTRICTED",
+          "CUSTOM"
         ],
         "title": "OrganizationRoles"
       },
@@ -78196,8 +78247,8 @@
             "type": "boolean"
           },
           "byoc_external_id": {
-            "readOnly": true,
             "description": "ByocExternalID is the organization's assigned AWS external ID, stored only in org config.",
+            "readOnly": true,
             "anyOf": [
               {
                 "type": "string"
@@ -82573,14 +82624,16 @@
           "ORGANIZATION_OPERATOR",
           "ORGANIZATION_USER",
           "ORGANIZATION_VIEWER",
-          "ORGANIZATION_RESTRICTED"
+          "ORGANIZATION_RESTRICTED",
+          "CUSTOM"
         ],
         "x-enum-varnames": [
           "OrganizationRoleAdmin",
           "OrganizationRoleOperator",
           "OrganizationRoleUser",
           "OrganizationRoleViewer",
-          "OrganizationRoleRestricted"
+          "OrganizationRoleRestricted",
+          "OrganizationRoleCustom"
         ]
       },
       "orgs.SCIMGroup": {
@@ -83660,6 +83713,20 @@
       "runs.Run": {
         "type": "object",
         "properties": {
+          "agent_environment": {
+            "description": "Experimental. The Agent environment the run belongs to, case-insensitive;\nrequires agent_id. Only workspaces enabled for Agent addressing accept it;\nothers get a 403.",
+            "type": "string",
+            "enum": [
+              "LOCAL",
+              "DEVELOPMENT",
+              "STAGING",
+              "PRODUCTION"
+            ]
+          },
+          "agent_id": {
+            "description": "Experimental. Addresses the run to an Agent, with agent_environment, in\nplace of session_id or session_name. Only workspaces enabled for Agent\naddressing accept it; others get a 403.",
+            "type": "string"
+          },
           "dotted_order": {
             "type": "string"
           },
@@ -85328,7 +85395,7 @@
         "type": "object",
         "properties": {
           "access": {
-            "description": "Access selects the login mode, mutually exclusive with the minted token.\nOmit the field for token mode: mint a short-lived service token (default).\n  \"restricted\" — LangSmith login: any user with SandboxesRead on the sandbox.\n  \"workspace\"  — LangSmith login: any member of the owning workspace.\n  \"off\"        — remove an existing LangSmith login grant and mint a token.\nA LangSmith login grant is durable; token mode is refused (409) while one exists.",
+            "description": "Access selects the login mode, mutually exclusive with the minted token.\nOmit the field for token mode: mint a short-lived service token (default).\n  \"restricted\" — LangSmith login: the sandbox's creator, or any user with SandboxesExec on it (admins by default).\n  \"workspace\"  — LangSmith login: any member of the owning workspace.\n  \"off\"        — remove an existing LangSmith login grant and mint a token.\nA LangSmith login grant is durable; token mode is refused (409) while one exists.",
             "type": "string",
             "enum": [
               "restricted",
