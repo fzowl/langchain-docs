@@ -278,7 +278,7 @@
           "tracer-sessions"
         ],
         "summary": "Delete tracer session",
-        "description": "Delete a specific project.",
+        "description": "Delete a specific project.\n\nReturns 202 when deletion is accepted. Cleanup runs asynchronously.\nLocation identifies the affected project, not a cleanup-status endpoint.\nFor a caller with read access, GET at that URL returns 200 with the project\nwhile it is still available, or 404 after the project is removed. A 404 does\nnot confirm that background trace cleanup has finished. Polling for cleanup\ncompletion is not supported.",
         "operationId": "delete_tracer_session_api_v1_sessions__session_id__delete",
         "security": [
           {
@@ -304,11 +304,14 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {}
+          "202": {
+            "description": "Deletion accepted; background cleanup may still be running.",
+            "headers": {
+              "Location": {
+                "description": "The affected project URL, not a cleanup-status endpoint.",
+                "schema": {
+                  "type": "string"
+                }
               }
             }
           },
@@ -8978,8 +8981,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -26342,10 +26345,10 @@
             "name": "limit",
             "in": "query",
             "schema": {
-              "maximum": 100,
-              "minimum": 1,
               "default": 20,
               "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
               "title": "Limit"
             }
           },
@@ -26354,9 +26357,9 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "minimum": 0,
               "default": 0,
               "type": "integer",
+              "minimum": 0,
               "title": "Offset"
             }
           },
@@ -27659,12 +27662,12 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "enum": [
                 "needs_my_review",
                 "needs_others_review",
                 "archived"
               ],
+              "type": "string",
               "title": "Status"
             }
           },
@@ -27692,11 +27695,11 @@
             "name": "item_type",
             "in": "query",
             "schema": {
-              "type": "string",
               "enum": [
                 "RUN",
                 "THREAD"
               ],
+              "type": "string",
               "title": "Item Type"
             }
           },
@@ -27705,8 +27708,8 @@
             "name": "min_start_time",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Min Start Time"
             }
           },
@@ -27715,8 +27718,8 @@
             "name": "max_start_time",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Max Start Time"
             }
           },
@@ -27725,12 +27728,12 @@
             "name": "direction",
             "in": "query",
             "schema": {
-              "default": "forward",
-              "type": "string",
               "enum": [
                 "forward",
                 "backward"
               ],
+              "default": "forward",
+              "type": "string",
               "title": "Direction"
             }
           }
@@ -27942,8 +27945,8 @@
             "name": "min_start_time",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Min Start Time"
             }
           },
@@ -27952,8 +27955,8 @@
             "name": "max_start_time",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Max Start Time"
             }
           }
@@ -28608,8 +28611,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -28727,8 +28730,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -28881,10 +28884,10 @@
             "style": "form",
             "explode": false,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Tag Value Id"
             }
           },
@@ -28904,10 +28907,10 @@
             "style": "form",
             "explode": false,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Resource Id"
             }
           },
@@ -29121,10 +29124,10 @@
             "style": "form",
             "explode": false,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Evaluator Ids"
             }
           },
@@ -29255,10 +29258,10 @@
             "style": "form",
             "explode": false,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Resource Id"
             }
           },
@@ -29287,10 +29290,10 @@
             "style": "form",
             "explode": false,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Tag Value Id"
             }
           },
@@ -30384,8 +30387,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -30474,8 +30477,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -30557,8 +30560,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -30818,11 +30821,11 @@
             "name": "repo_type",
             "in": "query",
             "schema": {
-              "type": "string",
               "enum": [
                 "agent",
                 "skill"
               ],
+              "type": "string",
               "title": "Repo Type"
             }
           }
@@ -31050,7 +31053,6 @@
             "name": "status",
             "in": "query",
             "schema": {
-              "type": "string",
               "enum": [
                 "open",
                 "fixing",
@@ -31058,6 +31060,7 @@
                 "completed",
                 "ignored"
               ],
+              "type": "string",
               "title": "Status"
             }
           },
@@ -31066,13 +31069,13 @@
             "name": "severity",
             "in": "query",
             "schema": {
-              "type": "integer",
               "enum": [
                 0,
                 1,
                 2,
                 3
               ],
+              "type": "integer",
               "title": "Severity"
             }
           },
@@ -31083,6 +31086,7 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "enum": [
                   0,
@@ -31092,7 +31096,6 @@
                 ],
                 "type": "integer"
               },
-              "type": "array",
               "title": "Severity Exact"
             }
           },
@@ -31103,6 +31106,7 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "enum": [
                   "fixing",
@@ -31111,7 +31115,6 @@
                 ],
                 "type": "string"
               },
-              "type": "array",
               "title": "Activity"
             }
           },
@@ -31129,8 +31132,8 @@
             "name": "trace_id",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "uuid",
+              "type": "string",
               "title": "Trace Id"
             }
           },
@@ -31148,7 +31151,6 @@
             "name": "sort_by",
             "in": "query",
             "schema": {
-              "type": "string",
               "enum": [
                 "default",
                 "created_at",
@@ -31158,6 +31160,7 @@
                 "trace_count",
                 "severity"
               ],
+              "type": "string",
               "title": "Sort By"
             }
           },
@@ -33508,10 +33511,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Name Like"
             }
           },
@@ -33522,10 +33525,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Email Like"
             }
           },
@@ -33536,10 +33539,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Workspace Name Like"
             }
           },
@@ -33550,10 +33553,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Organization Role Like"
             }
           },
@@ -33564,10 +33567,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Workspace Role Like"
             }
           }
@@ -33790,10 +33793,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Access Policy Ids"
             }
           }
@@ -34401,8 +34404,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -36169,8 +36172,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -36242,8 +36245,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36269,8 +36272,8 @@
             "name": "trace_id",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "uuid",
+              "type": "string",
               "title": "Trace Id"
             }
           }
@@ -36344,8 +36347,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36354,8 +36357,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36364,8 +36367,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Start Time"
             }
           },
@@ -36377,10 +36380,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           }
@@ -36462,8 +36465,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36474,10 +36477,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           }
@@ -36556,8 +36559,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36568,10 +36571,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           },
@@ -36680,8 +36683,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36690,8 +36693,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36702,10 +36705,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           }
@@ -36792,8 +36795,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36802,8 +36805,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36812,8 +36815,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Start Time"
             }
           },
@@ -36825,10 +36828,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           }
@@ -36938,8 +36941,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -37200,8 +37203,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -37210,8 +37213,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "uuid",
+              "type": "string",
               "title": "Project Id"
             }
           },
@@ -37222,6 +37225,7 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "enum": [
                   "ID",
@@ -37273,7 +37277,6 @@
                 ],
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           },
@@ -37282,8 +37285,8 @@
             "name": "start_time",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Start Time"
             }
           }
@@ -37417,8 +37420,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -37532,8 +37535,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -37645,8 +37648,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -37801,10 +37804,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Tag Value Id"
             }
           },
@@ -37824,10 +37827,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Label"
             }
           },
@@ -38332,7 +38335,7 @@
     },
     "/api/v2/sandboxes/boxes/{name}/download-url": {
       "post": {
-        "description": "Generate a tokenized link that downloads a single file from a sandbox with no further authentication. This mints a token rather than creating an addressable resource, so it returns 200 with no Location header. The token pins the sandbox, the file path, the response content type and disposition, and the sandbox flags, so a link cannot be repointed at another file or served under a weaker policy. The file is always served with a Content-Security-Policy: a sandbox directive, plus a default-src holding every fetch to the sandbox's own download host and a set of pre-approved third-party origins. csp_sandbox_flags may loosen the sandbox with allow-downloads, allow-forms, allow-modals, allow-orientation-lock, allow-pointer-lock, allow-popups, allow-presentation, allow-scripts, or allow-top-navigation-by-user-activation. allow-same-origin is not accepted, so a served file never shares an origin with anything. csp_source_bundles selects the third-party origins: cdnjs, google-fonts, jsdelivr, and unpkg are all allowed when the field is omitted, and 'none' holds the file to the sandbox alone. Because every file of one sandbox is served from the same host, a page can load sibling files it has links for, but only by their own link URLs. Links never expire unless expires_in_seconds is set. The link is served from the sandbox service domain, not the API host.",
+        "description": "Generate a tokenized link that downloads a single file from a sandbox with no further authentication. This mints a token rather than creating an addressable resource, so it returns 200 with no Location header. The token pins the sandbox, the file path, the response content type and disposition, and the sandbox flags, so a link cannot be repointed at another file or served under a weaker policy. The file is always served with a Content-Security-Policy: a sandbox directive, plus a default-src holding every fetch to the file's own download host and a set of pre-approved third-party origins. csp_sandbox_flags may loosen the sandbox with allow-downloads, allow-forms, allow-modals, allow-orientation-lock, allow-pointer-lock, allow-popups, allow-presentation, allow-same-origin, allow-scripts, or allow-top-navigation-by-user-activation. Every file is served from its own host, derived from the sandbox and the path, so allow-same-origin gives a page localStorage and IndexedDB that no other file can read, and re-minting a link for the same file keeps them. csp_sandbox set to false drops the sandbox directive altogether, and csp_sandbox_flags must then be omitted. csp_source_bundles selects the third-party origins: cdnjs, google-fonts, jsdelivr, and unpkg are all allowed when the field is omitted, 'none' holds the file to its own host, and 'any' sends no default-src at all. Links never expire unless expires_in_seconds is set. The link is served from the sandbox service domain, not the API host.",
         "tags": [
           "sandboxes"
         ],
@@ -39619,10 +39622,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Label"
             }
           },
@@ -40099,8 +40102,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Start Time"
             }
           },
@@ -40110,8 +40113,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "End Time"
             }
           },
@@ -40120,11 +40123,11 @@
             "name": "resource_type",
             "in": "query",
             "schema": {
-              "type": "string",
               "enum": [
                 "SANDBOX",
                 "SNAPSHOT"
               ],
+              "type": "string",
               "title": "Resource Type"
             }
           },
@@ -40135,10 +40138,10 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "type": "string"
               },
-              "type": "array",
               "title": "Resource Ids"
             }
           },
@@ -40147,10 +40150,10 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "maximum": 100,
-              "minimum": 1,
               "default": 20,
               "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
               "title": "Page Size"
             }
           },
@@ -40159,12 +40162,12 @@
             "name": "granularity",
             "in": "query",
             "schema": {
-              "default": "HOUR",
-              "type": "string",
               "enum": [
                 "HOUR",
                 "RESOURCE"
               ],
+              "default": "HOUR",
+              "type": "string",
               "title": "Granularity"
             }
           },
@@ -41529,8 +41532,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "uuid",
+              "type": "string",
               "title": "Project Id"
             }
           }
@@ -41734,8 +41737,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "uuid",
+              "type": "string",
               "title": "Project Id"
             }
           }
@@ -41837,6 +41840,7 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "enum": [
                   "TURNS",
@@ -41859,7 +41863,6 @@
                 ],
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           },
@@ -41869,8 +41872,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "uuid",
+              "type": "string",
               "title": "Session Id"
             }
           }
@@ -42021,10 +42024,10 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "maximum": 100,
-              "minimum": 1,
               "default": 20,
               "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
               "title": "Page Size"
             }
           },
@@ -42034,8 +42037,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "uuid",
+              "type": "string",
               "title": "Project Id"
             }
           },
@@ -42050,6 +42053,7 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "enum": [
                   "THREAD_ID",
@@ -42080,7 +42084,6 @@
                 ],
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           },
@@ -42382,8 +42385,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -42400,8 +42403,8 @@
             "name": "max_start_time",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Max Start Time"
             }
           },
@@ -42410,8 +42413,8 @@
             "name": "min_start_time",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Min Start Time"
             }
           },
@@ -42421,8 +42424,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "uuid",
+              "type": "string",
               "title": "Project Id"
             }
           },
@@ -42433,6 +42436,7 @@
             "style": "form",
             "explode": true,
             "schema": {
+              "type": "array",
               "items": {
                 "enum": [
                   "ID",
@@ -42484,7 +42488,6 @@
                 ],
                 "type": "string"
               },
-              "type": "array",
               "title": "Selects"
             }
           }
@@ -42708,8 +42711,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -42807,8 +42810,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -42941,8 +42944,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -42952,8 +42955,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -43048,8 +43051,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -43059,8 +43062,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -43148,8 +43151,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -43159,8 +43162,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -44201,8 +44204,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -44274,8 +44277,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -44392,8 +44395,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -44502,10 +44505,10 @@
             "name": "limit",
             "in": "query",
             "schema": {
-              "maximum": 100,
-              "minimum": 1,
               "default": 50,
               "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
               "title": "Limit"
             }
           },
@@ -44513,9 +44516,9 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "minimum": 0,
               "default": 0,
               "type": "integer",
+              "minimum": 0,
               "title": "Offset"
             }
           }
@@ -45374,8 +45377,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -45478,10 +45481,10 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "maximum": 100,
-              "minimum": 1,
               "default": 20,
               "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
               "title": "Page Size"
             }
           },
@@ -47729,6 +47732,9 @@
           "delete_sso_settings",
           "update_default_sso_provision_organization",
           "update_login_methods",
+          "create_oidc_integration",
+          "update_oidc_integration",
+          "delete_oidc_integration",
           "update_organization_info",
           "update_business_info",
           "update_payment_plan",
@@ -47875,6 +47881,7 @@
           "get_annotation_queue_items",
           "submit_nps_response",
           "submit_product_feedback",
+          "update_trace_flight_score",
           "create_mcp_server",
           "update_mcp_server",
           "delete_mcp_server",
@@ -78247,8 +78254,8 @@
             "type": "boolean"
           },
           "byoc_external_id": {
-            "description": "ByocExternalID is the organization's assigned AWS external ID, stored only in org config.",
             "readOnly": true,
+            "description": "ByocExternalID is the organization's assigned AWS external ID, stored only in org config.",
             "anyOf": [
               {
                 "type": "string"
@@ -84566,6 +84573,10 @@
           "content_type": {
             "type": "string"
           },
+          "csp_sandbox": {
+            "description": "CSPSandbox false serves the file with no CSP sandbox directive; omit to keep it.",
+            "type": "boolean"
+          },
           "csp_sandbox_flags": {
             "description": "CSPSandboxFlags loosen the CSP sandbox the file is served under; omit for the most restrictive policy.",
             "type": "array",
@@ -84580,7 +84591,8 @@
                 "allow-popups",
                 "allow-presentation",
                 "allow-scripts",
-                "allow-top-navigation-by-user-activation"
+                "allow-top-navigation-by-user-activation",
+                "allow-same-origin"
               ]
             }
           },
@@ -84594,7 +84606,8 @@
                 "google-fonts",
                 "jsdelivr",
                 "unpkg",
-                "none"
+                "none",
+                "any"
               ]
             }
           },
