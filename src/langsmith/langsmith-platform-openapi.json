@@ -8981,8 +8981,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -11027,7 +11027,7 @@
           "feedback"
         ],
         "summary": "Create feedback",
-        "description": "Create a new feedback.\n\n`session_id` identifies the tracing project the feedback belongs to. It is\nrequired unless the feedback is addressed by `address`, or by `agent_id` and\n`agent_environment`, which name that project through an Agent environment\nthat already exists.",
+        "description": "Create a new feedback.\n\n`session_id` identifies the tracing project the feedback belongs to. It is\nrequired unless the feedback is addressed by `address`, which names that\nproject through an Agent environment that already exists.",
         "operationId": "create_feedback_api_v1_feedback_post",
         "security": [
           {
@@ -11062,7 +11062,7 @@
             }
           },
           "400": {
-            "description": "agent_id or agent_environment is invalid, or no Agent environment matches them. Feedback does not create one."
+            "description": "The address is invalid, or no Agent environment matches it. Feedback does not create one."
           },
           "403": {
             "description": "The feedback key is reserved, or Agent addressing is not enabled for this workspace."
@@ -26335,8 +26335,8 @@
             "name": "include_stats",
             "in": "query",
             "schema": {
-              "default": true,
               "type": "boolean",
+              "default": true,
               "title": "Include Stats"
             }
           },
@@ -26346,9 +26346,9 @@
             "in": "query",
             "schema": {
               "maximum": 100,
-              "default": 20,
-              "type": "integer",
               "minimum": 1,
+              "type": "integer",
+              "default": 20,
               "title": "Limit"
             }
           },
@@ -26357,9 +26357,9 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "default": 0,
-              "type": "integer",
               "minimum": 0,
+              "type": "integer",
+              "default": 0,
               "title": "Offset"
             }
           },
@@ -26569,8 +26569,8 @@
             "name": "get_examples",
             "in": "query",
             "schema": {
-              "default": false,
               "type": "boolean",
+              "default": false,
               "title": "Get Examples"
             }
           },
@@ -26588,8 +26588,8 @@
             "name": "include_model",
             "in": "query",
             "schema": {
-              "default": false,
               "type": "boolean",
+              "default": false,
               "title": "Include Model"
             }
           },
@@ -26597,8 +26597,8 @@
             "name": "is_view",
             "in": "query",
             "schema": {
-              "default": false,
               "type": "boolean",
+              "default": false,
               "title": "Is View"
             }
           }
@@ -27676,8 +27676,8 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "default": 20,
               "type": "integer",
+              "default": 20,
               "title": "Page Size"
             }
           },
@@ -27708,8 +27708,8 @@
             "name": "min_start_time",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Min Start Time"
             }
           },
@@ -27718,8 +27718,8 @@
             "name": "max_start_time",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Max Start Time"
             }
           },
@@ -27728,12 +27728,12 @@
             "name": "direction",
             "in": "query",
             "schema": {
-              "default": "forward",
               "enum": [
                 "forward",
                 "backward"
               ],
               "type": "string",
+              "default": "forward",
               "title": "Direction"
             }
           }
@@ -27945,8 +27945,8 @@
             "name": "min_start_time",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Min Start Time"
             }
           },
@@ -27955,8 +27955,8 @@
             "name": "max_start_time",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Max Start Time"
             }
           }
@@ -28611,8 +28611,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -28730,8 +28730,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -28865,8 +28865,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -28875,8 +28875,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -29023,8 +29023,8 @@
             "name": "limit",
             "in": "query",
             "schema": {
-              "default": 100,
               "type": "integer",
+              "default": 100,
               "title": "Limit"
             }
           },
@@ -29033,8 +29033,8 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "default": 0,
               "type": "integer",
+              "default": 0,
               "title": "Offset"
             }
           }
@@ -30464,8 +30464,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -30554,8 +30554,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -30637,8 +30637,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -31209,8 +31209,8 @@
             "name": "trace_id",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "uuid",
+              "type": "string",
               "title": "Trace Id"
             }
           },
@@ -34481,8 +34481,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -36249,8 +36249,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -36322,8 +36322,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36349,8 +36349,8 @@
             "name": "trace_id",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "uuid",
+              "type": "string",
               "title": "Trace Id"
             }
           }
@@ -36424,8 +36424,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36434,8 +36434,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36444,8 +36444,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Start Time"
             }
           },
@@ -36542,8 +36542,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36636,8 +36636,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36760,8 +36760,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36770,8 +36770,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36872,8 +36872,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36882,8 +36882,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -36892,8 +36892,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Start Time"
             }
           },
@@ -37018,8 +37018,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -37280,8 +37280,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -37290,8 +37290,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "uuid",
+              "type": "string",
               "title": "Project Id"
             }
           },
@@ -37362,8 +37362,8 @@
             "name": "start_time",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Start Time"
             }
           }
@@ -37497,8 +37497,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -37612,8 +37612,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -37725,8 +37725,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -37822,8 +37822,8 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "default": 20,
               "type": "integer",
+              "default": 20,
               "title": "Page Size"
             }
           },
@@ -37841,8 +37841,8 @@
             "name": "limit",
             "in": "query",
             "schema": {
-              "default": 50,
               "type": "integer",
+              "default": 50,
               "title": "Limit"
             }
           },
@@ -37851,8 +37851,8 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "default": 0,
               "type": "integer",
+              "default": 0,
               "title": "Offset"
             }
           },
@@ -37916,8 +37916,8 @@
             "name": "sort_by",
             "in": "query",
             "schema": {
-              "default": "created_at",
               "type": "string",
+              "default": "created_at",
               "title": "Sort By"
             }
           },
@@ -37926,8 +37926,8 @@
             "name": "sort_order",
             "in": "query",
             "schema": {
-              "default": "desc",
               "type": "string",
+              "default": "desc",
               "title": "Sort Order"
             }
           },
@@ -37936,8 +37936,8 @@
             "name": "sort_direction",
             "in": "query",
             "schema": {
-              "default": "desc",
               "type": "string",
+              "default": "desc",
               "title": "Sort Direction"
             }
           }
@@ -38650,8 +38650,8 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "default": 20,
               "type": "integer",
+              "default": 20,
               "title": "Page Size"
             }
           },
@@ -39631,8 +39631,8 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "default": 20,
               "type": "integer",
+              "default": 20,
               "title": "Page Size"
             }
           },
@@ -39650,8 +39650,8 @@
             "name": "limit",
             "in": "query",
             "schema": {
-              "default": 50,
               "type": "integer",
+              "default": 50,
               "title": "Limit"
             }
           },
@@ -39660,8 +39660,8 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "default": 0,
               "type": "integer",
+              "default": 0,
               "title": "Offset"
             }
           },
@@ -39711,8 +39711,8 @@
             "name": "sort_by",
             "in": "query",
             "schema": {
-              "default": "created_at",
               "type": "string",
+              "default": "created_at",
               "title": "Sort By"
             }
           },
@@ -39721,8 +39721,8 @@
             "name": "sort_order",
             "in": "query",
             "schema": {
-              "default": "desc",
               "type": "string",
+              "default": "desc",
               "title": "Sort Order"
             }
           },
@@ -39731,8 +39731,8 @@
             "name": "sort_direction",
             "in": "query",
             "schema": {
-              "default": "desc",
               "type": "string",
+              "default": "desc",
               "title": "Sort Direction"
             }
           }
@@ -40179,8 +40179,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Start Time"
             }
           },
@@ -40190,8 +40190,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "End Time"
             }
           },
@@ -40228,9 +40228,9 @@
             "in": "query",
             "schema": {
               "maximum": 100,
-              "default": 20,
-              "type": "integer",
               "minimum": 1,
+              "type": "integer",
+              "default": 20,
               "title": "Page Size"
             }
           },
@@ -40239,12 +40239,12 @@
             "name": "granularity",
             "in": "query",
             "schema": {
-              "default": "HOUR",
               "enum": [
                 "HOUR",
                 "RESOURCE"
               ],
               "type": "string",
+              "default": "HOUR",
               "title": "Granularity"
             }
           },
@@ -41609,8 +41609,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "uuid",
+              "type": "string",
               "title": "Project Id"
             }
           }
@@ -41814,8 +41814,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "uuid",
+              "type": "string",
               "title": "Project Id"
             }
           }
@@ -41949,8 +41949,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "uuid",
+              "type": "string",
               "title": "Session Id"
             }
           }
@@ -42102,9 +42102,9 @@
             "in": "query",
             "schema": {
               "maximum": 100,
-              "default": 20,
-              "type": "integer",
               "minimum": 1,
+              "type": "integer",
+              "default": 20,
               "title": "Page Size"
             }
           },
@@ -42114,8 +42114,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "uuid",
+              "type": "string",
               "title": "Project Id"
             }
           },
@@ -42462,8 +42462,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -42480,8 +42480,8 @@
             "name": "max_start_time",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Max Start Time"
             }
           },
@@ -42490,8 +42490,8 @@
             "name": "min_start_time",
             "in": "query",
             "schema": {
-              "type": "string",
               "format": "date-time",
+              "type": "string",
               "title": "Min Start Time"
             }
           },
@@ -42501,8 +42501,8 @@
             "in": "query",
             "required": true,
             "schema": {
-              "type": "string",
               "format": "uuid",
+              "type": "string",
               "title": "Project Id"
             }
           },
@@ -42788,8 +42788,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -42887,8 +42887,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -43021,8 +43021,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -43032,8 +43032,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -43128,8 +43128,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -43139,8 +43139,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -43228,8 +43228,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           },
           {
@@ -43239,8 +43239,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -44281,8 +44281,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -44354,8 +44354,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -44472,8 +44472,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -44583,9 +44583,9 @@
             "in": "query",
             "schema": {
               "maximum": 100,
-              "default": 50,
-              "type": "integer",
               "minimum": 1,
+              "type": "integer",
+              "default": 50,
               "title": "Limit"
             }
           },
@@ -44593,9 +44593,9 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "default": 0,
-              "type": "integer",
               "minimum": 0,
+              "type": "integer",
+              "default": 0,
               "title": "Offset"
             }
           }
@@ -45454,8 +45454,8 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "format": "uuid",
+              "type": "string"
             }
           }
         ],
@@ -45559,9 +45559,9 @@
             "in": "query",
             "schema": {
               "maximum": 100,
-              "default": 20,
-              "type": "integer",
               "minimum": 1,
+              "type": "integer",
+              "default": 20,
               "title": "Page Size"
             }
           },
@@ -47923,8 +47923,11 @@
           "attach_access_policies",
           "detach_access_policies",
           "read_role_access_policies",
+          "read_team_access_policies",
           "create_team",
           "add_team_members",
+          "attach_team_access_policy",
+          "detach_team_access_policy",
           "create_scim_token",
           "update_scim_token",
           "delete_scim_token",
@@ -56658,45 +56661,15 @@
               }
             ],
             "title": "Session Id",
-            "description": "Required unless the feedback is addressed by agent_id and agent_environment. The ID of the tracing project (session) the feedback belongs to."
-          },
-          "agent_id": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Agent Id",
-            "description": "Beta. Only supported in workspaces where Agent addressing is enabled; other workspaces get a 403. The Agent's id, not a UUID: 1 to 63 lowercase ASCII letters, digits, or hyphens, starting with a letter and ending with a letter or digit (e.g. support-agent). Addresses the tracing project through an Agent instead of session_id. Sent together with agent_environment, and never alongside session_id. The Agent and the environment must already exist; sending feedback does not create them."
-          },
-          "agent_environment": {
-            "anyOf": [
-              {
-                "type": "string",
-                "enum": [
-                  "LOCAL",
-                  "DEVELOPMENT",
-                  "STAGING",
-                  "PRODUCTION"
-                ]
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Agent Environment",
-            "description": "Beta. Only supported in workspaces where Agent addressing is enabled; other workspaces get a 403. The Agent environment whose tracing project the feedback belongs to. Matched case-insensitively. Sent together with agent_id."
+            "description": "Required unless the feedback is addressed by address. The ID of the tracing project (session) the feedback belongs to."
           },
           "address": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/address.AgentAddress"
-              }
-            ],
-            "description": "Beta. Only supported in workspaces where Agent addressing is enabled; other workspaces get a 403. Addresses the tracing project through an Agent environment instead of session_id. Never combined with agent_id, agent_environment, or session_id. The Agent and the environment must already exist; sending feedback does not create them."
+            "type": "string",
+            "title": "Address",
+            "description": "Beta. Only supported in workspaces where Agent addressing is enabled; other workspaces get a 403. Addresses the tracing project through an Agent environment, as lrn:agents/{id}/environments/{environment}, instead of session_id. The id is 1 to 63 lowercase ASCII letters, digits, or hyphens, starting with a letter and ending with a letter or digit. The environment is local, development, staging, or production, matched case-insensitively. Never combined with session_id. The Agent and the environment must already exist; sending feedback does not create them.",
+            "examples": [
+              "lrn:agents/support-agent/environments/production"
+            ]
           },
           "trace_id": {
             "anyOf": [
@@ -77354,43 +77327,6 @@
         "title": "Tenant",
         "description": "Tenant schema."
       },
-      "address.AgentAddress": {
-        "type": "object",
-        "required": [
-          "environment",
-          "id",
-          "kind"
-        ],
-        "properties": {
-          "environment": {
-            "description": "`environment` is the Agent environment.",
-            "type": "string",
-            "enum": [
-              "LOCAL",
-              "DEVELOPMENT",
-              "STAGING",
-              "PRODUCTION"
-            ],
-            "example": "PRODUCTION"
-          },
-          "id": {
-            "description": "`id` is the Agent's user-assigned id.",
-            "type": "string",
-            "maxLength": 63,
-            "minLength": 1,
-            "example": "support-agent",
-            "pattern": "^[a-z](?:[a-z0-9-]{0,61}[a-z0-9])?$"
-          },
-          "kind": {
-            "enum": [
-              "AGENT"
-            ],
-            "type": "string",
-            "x-stainless-const": true
-          }
-        },
-        "additionalProperties": false
-      },
       "agent.CreateIssuesAgentRequest": {
         "type": "object",
         "properties": {
@@ -78438,8 +78374,8 @@
             "type": "boolean"
           },
           "byoc_external_id": {
-            "readOnly": true,
             "description": "ByocExternalID is the organization's assigned AWS external ID, stored only in org config.",
+            "readOnly": true,
             "anyOf": [
               {
                 "type": "string"
@@ -83934,26 +83870,9 @@
         "type": "object",
         "properties": {
           "address": {
-            "description": "Beta. Addresses the run to an Agent environment in place of\nsession_id or session_name. Cannot be combined with agent_id or\nagent_environment. Only workspaces enabled for Agent addressing accept\nit; others get a 403.",
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/address.AgentAddress"
-              }
-            ]
-          },
-          "agent_environment": {
-            "description": "Beta. The Agent environment the run belongs to, case-insensitive;\nrequires agent_id. Only workspaces enabled for Agent addressing accept it;\nothers get a 403.",
+            "description": "Beta. Addresses the run to an Agent environment in place of session_id or\nsession_name, as lrn:agents/{id}/environments/{environment}. The environment is\ncase-insensitive. Only workspaces enabled for Agent addressing accept it;\nothers get a 403.",
             "type": "string",
-            "enum": [
-              "LOCAL",
-              "DEVELOPMENT",
-              "STAGING",
-              "PRODUCTION"
-            ]
-          },
-          "agent_id": {
-            "description": "Beta, superseded by address. Addresses the run to an Agent, with\nagent_environment, in place of session_id or session_name. Only\nworkspaces enabled for Agent addressing accept it; others get a 403.",
-            "type": "string"
+            "example": "lrn:agents/support-agent/environments/production"
           },
           "dotted_order": {
             "type": "string"
