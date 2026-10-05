@@ -26345,10 +26345,10 @@
             "name": "limit",
             "in": "query",
             "schema": {
-              "maximum": 100,
               "default": 20,
               "minimum": 1,
               "type": "integer",
+              "maximum": 100,
               "title": "Limit"
             }
           },
@@ -40227,10 +40227,10 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "maximum": 100,
               "default": 20,
               "minimum": 1,
               "type": "integer",
+              "maximum": 100,
               "title": "Page Size"
             }
           },
@@ -42101,10 +42101,10 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "maximum": 100,
               "default": 20,
               "minimum": 1,
               "type": "integer",
+              "maximum": 100,
               "title": "Page Size"
             }
           },
@@ -44582,10 +44582,10 @@
             "name": "limit",
             "in": "query",
             "schema": {
-              "maximum": 100,
               "default": 50,
               "minimum": 1,
               "type": "integer",
+              "maximum": 100,
               "title": "Limit"
             }
           },
@@ -45558,10 +45558,10 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "maximum": 100,
               "default": 20,
               "minimum": 1,
               "type": "integer",
+              "maximum": 100,
               "title": "Page Size"
             }
           },
@@ -78374,8 +78374,8 @@
             "type": "boolean"
           },
           "byoc_external_id": {
-            "description": "ByocExternalID is the organization's assigned AWS external ID, stored only in org config.",
             "readOnly": true,
+            "description": "ByocExternalID is the organization's assigned AWS external ID, stored only in org config.",
             "anyOf": [
               {
                 "type": "string"
