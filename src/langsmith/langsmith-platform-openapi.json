@@ -46401,6 +46401,17 @@
               }
             ],
             "title": "Sso Only"
+          },
+          "oidc_login_enabled": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Oidc Login Enabled"
           }
         },
         "type": "object",
@@ -47660,11 +47671,116 @@
             ],
             "title": "Delegated From Sandbox Id",
             "description": "Sandbox that made the call under an access-delegation grant, set when the actor fields name its delegator rather than a user acting directly."
+          },
+          "duration_milliseconds": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Duration Milliseconds",
+            "description": "Time the server took to handle the request, in milliseconds."
+          },
+          "user_agent": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "User Agent",
+            "description": "User-Agent header of the request, truncated to 256 bytes."
+          },
+          "tool_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tool Name",
+            "description": "Tool the request invoked, as named by the caller."
+          },
+          "caller": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Caller",
+            "description": "LangSmith product that made the request, as reported by the caller."
+          },
+          "is_tool_error": {
+            "type": "boolean",
+            "title": "Is Tool Error",
+            "description": "True when the invoked tool reported a failure inside a successful response."
+          },
+          "gateway": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AuditLogGateway"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Managed Tools gateway the request went through."
+          },
+          "upstream": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AuditLogUpstream"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Server and tool a Managed Tools gateway routed the call to."
+          },
+          "server": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AuditLogServer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Managed Tools MCP server the request reached."
           }
         },
         "type": "object",
         "title": "AuditLogEnrichments",
         "description": "Non-indexed request metadata stored in the enrichments JSONB column."
+      },
+      "AuditLogGateway": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name"
+        ],
+        "title": "AuditLogGateway",
+        "description": "Managed Tools gateway a request went through."
       },
       "AuditLogMessage": {
         "properties": {
@@ -47928,6 +48044,7 @@
           "add_team_members",
           "attach_team_access_policy",
           "detach_team_access_policy",
+          "remove_team_member",
           "create_scim_token",
           "update_scim_token",
           "delete_scim_token",
@@ -47969,6 +48086,8 @@
           "update_mcp_server",
           "delete_mcp_server",
           "register_mcp_server_oauth",
+          "invoke_mcp_server",
+          "invoke_mcp_gateway",
           "create_mcp_gateway",
           "update_mcp_gateway",
           "delete_mcp_gateway",
@@ -48254,6 +48373,54 @@
         "description": "Operations that are logged in audit_logs database table.",
         "x-extensible-enum": true
       },
+      "AuditLogServer": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "key": {
+            "type": "string",
+            "title": "Key"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "host": {
+            "type": "string",
+            "title": "Host"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "title": "AuditLogServer",
+        "description": "Managed Tools MCP server a request reached."
+      },
+      "AuditLogUpstream": {
+        "properties": {
+          "server_id": {
+            "type": "string",
+            "title": "Server Id"
+          },
+          "builtin_server_key": {
+            "type": "string",
+            "title": "Builtin Server Key"
+          },
+          "tool_name": {
+            "type": "string",
+            "title": "Tool Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool_name"
+        ],
+        "title": "AuditLogUpstream",
+        "description": "Server and tool a Managed Tools gateway routed a call to."
+      },
       "AuthProvider": {
         "type": "string",
         "enum": [
@@ -48261,7 +48428,8 @@
           "supabase:non-sso",
           "supabase:sso",
           "oidc",
-          "custom-oidc"
+          "custom-oidc",
+          "oidc-sso"
         ],
         "title": "AuthProvider"
       },
@@ -62405,6 +62573,17 @@
             ],
             "title": "Llm Auth Proxy Enabled"
           },
+          "oidc_login_enabled": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Oidc Login Enabled"
+          },
           "llm_auth_proxy_jwt_audience": {
             "anyOf": [
               {
@@ -62730,6 +62909,17 @@
               }
             ],
             "title": "Llm Auth Proxy Enabled"
+          },
+          "oidc_login_enabled": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Oidc Login Enabled"
           },
           "llm_auth_proxy_jwt_audience": {
             "anyOf": [
@@ -78374,8 +78564,8 @@
             "type": "boolean"
           },
           "byoc_external_id": {
-            "readOnly": true,
             "description": "ByocExternalID is the organization's assigned AWS external ID, stored only in org config.",
+            "readOnly": true,
             "anyOf": [
               {
                 "type": "string"
@@ -81407,17 +81597,6 @@
           },
           "fix_dispatched_at": {
             "type": "string"
-          },
-          "fix_handoff_bot_user_id": {
-            "description": "Non-nil once the issue is handed off to a coding agent; Engine skips its\nown fix run while it is set.",
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ]
           },
           "fix_pr_number": {
             "type": "integer"
@@ -87459,10 +87638,15 @@
       "webhooks.SlackHandoffResponse": {
         "type": "object",
         "required": [
-          "bot_user_id"
+          "bot_user_id",
+          "message"
         ],
         "properties": {
           "bot_user_id": {
+            "type": "string"
+          },
+          "message": {
+            "description": "Message is the custom instruction after the mention; \"\" means the default\ntext (\"Investigate this issue and open a fix if needed.\").",
             "type": "string"
           }
         }
