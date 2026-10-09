@@ -26335,8 +26335,8 @@
             "name": "include_stats",
             "in": "query",
             "schema": {
-              "default": true,
               "type": "boolean",
+              "default": true,
               "title": "Include Stats"
             }
           },
@@ -26345,10 +26345,10 @@
             "name": "limit",
             "in": "query",
             "schema": {
-              "default": 20,
-              "type": "integer",
-              "maximum": 100,
               "minimum": 1,
+              "type": "integer",
+              "default": 20,
+              "maximum": 100,
               "title": "Limit"
             }
           },
@@ -26357,9 +26357,9 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "default": 0,
-              "type": "integer",
               "minimum": 0,
+              "type": "integer",
+              "default": 0,
               "title": "Offset"
             }
           },
@@ -26569,8 +26569,8 @@
             "name": "get_examples",
             "in": "query",
             "schema": {
-              "default": false,
               "type": "boolean",
+              "default": false,
               "title": "Get Examples"
             }
           },
@@ -26588,8 +26588,8 @@
             "name": "include_model",
             "in": "query",
             "schema": {
-              "default": false,
               "type": "boolean",
+              "default": false,
               "title": "Include Model"
             }
           },
@@ -26597,8 +26597,8 @@
             "name": "is_view",
             "in": "query",
             "schema": {
-              "default": false,
               "type": "boolean",
+              "default": false,
               "title": "Is View"
             }
           }
@@ -27676,8 +27676,8 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "default": 20,
               "type": "integer",
+              "default": 20,
               "title": "Page Size"
             }
           },
@@ -27728,8 +27728,8 @@
             "name": "direction",
             "in": "query",
             "schema": {
-              "default": "forward",
               "type": "string",
+              "default": "forward",
               "enum": [
                 "forward",
                 "backward"
@@ -29023,8 +29023,8 @@
             "name": "limit",
             "in": "query",
             "schema": {
-              "default": 100,
               "type": "integer",
+              "default": 100,
               "title": "Limit"
             }
           },
@@ -29033,8 +29033,8 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "default": 0,
               "type": "integer",
+              "default": 0,
               "title": "Offset"
             }
           }
@@ -33663,7 +33663,7 @@
                 }
               },
               "X-Members-List-All-Workspaces": {
-                "description": "true if caller has organization:manage",
+                "description": "true if caller has organization:members:manage",
                 "schema": {
                   "type": "string"
                 }
@@ -34062,7 +34062,7 @@
             }
           },
           "403": {
-            "description": "Forbidden - requires OrganizationManage permission",
+            "description": "Forbidden - requires OrganizationAuthenticationManage permission",
             "content": {
               "application/json": {
                 "schema": {
@@ -34241,7 +34241,7 @@
             }
           },
           "403": {
-            "description": "Forbidden - requires OrganizationManage permission",
+            "description": "Forbidden - requires OrganizationAuthenticationManage permission",
             "content": {
               "application/json": {
                 "schema": {
@@ -34333,7 +34333,7 @@
             }
           },
           "403": {
-            "description": "Forbidden - requires OrganizationManage permission",
+            "description": "Forbidden - requires OrganizationAuthenticationManage permission",
             "content": {
               "application/json": {
                 "schema": {
@@ -37945,8 +37945,8 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "default": 20,
               "type": "integer",
+              "default": 20,
               "title": "Page Size"
             }
           },
@@ -37964,8 +37964,8 @@
             "name": "limit",
             "in": "query",
             "schema": {
-              "default": 50,
               "type": "integer",
+              "default": 50,
               "title": "Limit"
             }
           },
@@ -37974,8 +37974,8 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "default": 0,
               "type": "integer",
+              "default": 0,
               "title": "Offset"
             }
           },
@@ -38039,8 +38039,8 @@
             "name": "sort_by",
             "in": "query",
             "schema": {
-              "default": "created_at",
               "type": "string",
+              "default": "created_at",
               "title": "Sort By"
             }
           },
@@ -38049,8 +38049,8 @@
             "name": "sort_order",
             "in": "query",
             "schema": {
-              "default": "desc",
               "type": "string",
+              "default": "desc",
               "title": "Sort Order"
             }
           },
@@ -38059,8 +38059,8 @@
             "name": "sort_direction",
             "in": "query",
             "schema": {
-              "default": "desc",
               "type": "string",
+              "default": "desc",
               "title": "Sort Direction"
             }
           }
@@ -38773,8 +38773,8 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "default": 20,
               "type": "integer",
+              "default": 20,
               "title": "Page Size"
             }
           },
@@ -39754,8 +39754,8 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "default": 20,
               "type": "integer",
+              "default": 20,
               "title": "Page Size"
             }
           },
@@ -39773,8 +39773,8 @@
             "name": "limit",
             "in": "query",
             "schema": {
-              "default": 50,
               "type": "integer",
+              "default": 50,
               "title": "Limit"
             }
           },
@@ -39783,8 +39783,8 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "default": 0,
               "type": "integer",
+              "default": 0,
               "title": "Offset"
             }
           },
@@ -39834,8 +39834,8 @@
             "name": "sort_by",
             "in": "query",
             "schema": {
-              "default": "created_at",
               "type": "string",
+              "default": "created_at",
               "title": "Sort By"
             }
           },
@@ -39844,8 +39844,8 @@
             "name": "sort_order",
             "in": "query",
             "schema": {
-              "default": "desc",
               "type": "string",
+              "default": "desc",
               "title": "Sort Order"
             }
           },
@@ -39854,8 +39854,8 @@
             "name": "sort_direction",
             "in": "query",
             "schema": {
-              "default": "desc",
               "type": "string",
+              "default": "desc",
               "title": "Sort Direction"
             }
           }
@@ -40350,10 +40350,10 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "default": 20,
-              "type": "integer",
-              "maximum": 100,
               "minimum": 1,
+              "type": "integer",
+              "default": 20,
+              "maximum": 100,
               "title": "Page Size"
             }
           },
@@ -40362,8 +40362,8 @@
             "name": "granularity",
             "in": "query",
             "schema": {
-              "default": "HOUR",
               "type": "string",
+              "default": "HOUR",
               "enum": [
                 "HOUR",
                 "RESOURCE"
@@ -42224,10 +42224,10 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "default": 20,
-              "type": "integer",
-              "maximum": 100,
               "minimum": 1,
+              "type": "integer",
+              "default": 20,
+              "maximum": 100,
               "title": "Page Size"
             }
           },
@@ -44392,7 +44392,7 @@
     },
     "/orgs/current/data-planes/{id}": {
       "get": {
-        "description": "Returns a data plane and its saved provisioning settings in any lifecycle state. Requires BYOC and organization management permission.",
+        "description": "Returns a data plane and its saved provisioning settings in any lifecycle state. Requires BYOC and organization:infrastructure:read.",
         "tags": [
           "data_planes"
         ],
@@ -44465,7 +44465,7 @@
         "x-public": true
       },
       "delete": {
-        "description": "Verifies that the stored customer AWS role has delete permissions, removes linked workspaces, and starts asynchronous deprovisioning for an active or provisioning_failed data plane owned by the caller's organization. Requires BYOC to be enabled for the org and org admin permissions.",
+        "description": "Verifies that the stored customer AWS role has delete permissions, removes linked workspaces, and starts asynchronous deprovisioning for an active or provisioning_failed data plane owned by the caller's organization. Requires BYOC to be enabled for the org and organization:infrastructure:manage.",
         "tags": [
           "data_planes"
         ],
@@ -44705,10 +44705,10 @@
             "name": "limit",
             "in": "query",
             "schema": {
-              "default": 50,
-              "type": "integer",
-              "maximum": 100,
               "minimum": 1,
+              "type": "integer",
+              "default": 50,
+              "maximum": 100,
               "title": "Limit"
             }
           },
@@ -44716,9 +44716,9 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "default": 0,
-              "type": "integer",
               "minimum": 0,
+              "type": "integer",
+              "default": 0,
               "title": "Offset"
             }
           }
@@ -45681,10 +45681,10 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "default": 20,
-              "type": "integer",
-              "maximum": 100,
               "minimum": 1,
+              "type": "integer",
+              "default": 20,
+              "maximum": 100,
               "title": "Page Size"
             }
           },
@@ -46814,6 +46814,18 @@
             "default": {
               "__missing__": "__missing__"
             }
+          },
+          "feedback_config_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Feedback Config Id"
           }
         },
         "type": "object",
@@ -50712,6 +50724,17 @@
         "title": "ClusteringJobConfigResponse",
         "description": "An Insights job configuration."
       },
+      "CodeEvaluatorInputType": {
+        "type": "string",
+        "enum": [
+          "thread",
+          "all_messages",
+          "human_ai_pairs",
+          "first_human_last_ai"
+        ],
+        "title": "CodeEvaluatorInputType",
+        "description": "Input provided to a code evaluator."
+      },
       "CodeEvaluatorLanguage": {
         "type": "string",
         "enum": [
@@ -50741,6 +50764,16 @@
             "type": "boolean",
             "title": "Require Attachments",
             "default": false
+          },
+          "code_evaluator_input": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CodeEvaluatorInputType"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "type": "object",
@@ -56625,6 +56658,11 @@
       },
       "FeedbackConfigSchema": {
         "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
           "feedback_key": {
             "type": "string",
             "title": "Feedback Key"
@@ -56656,6 +56694,7 @@
         },
         "type": "object",
         "required": [
+          "id",
           "feedback_key",
           "feedback_config",
           "tenant_id",
@@ -80526,6 +80565,21 @@
           "code": {
             "type": "string"
           },
+          "code_evaluator_input": {
+            "description": "CodeEvaluatorInput is which thread data the evaluator receives.\nNull for run evaluators.",
+            "anyOf": [
+              {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/evaluators.CodeEvaluatorInput"
+                  }
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "dependencies": {
             "type": "string"
           },
@@ -80554,6 +80608,21 @@
           }
         }
       },
+      "evaluators.CodeEvaluatorInput": {
+        "type": "string",
+        "enum": [
+          "thread",
+          "all_messages",
+          "human_ai_pairs",
+          "first_human_last_ai"
+        ],
+        "x-enum-varnames": [
+          "CodeEvaluatorInputThread",
+          "CodeEvaluatorInputAllMessages",
+          "CodeEvaluatorInputHumanAIPairs",
+          "CodeEvaluatorInputFirstHumanLastAI"
+        ]
+      },
       "evaluators.CreateCodeEvaluatorRequest": {
         "type": "object",
         "properties": {
@@ -80562,6 +80631,21 @@
           },
           "code": {
             "type": "string"
+          },
+          "code_evaluator_input": {
+            "description": "CodeEvaluatorInput is which thread data the evaluator receives.\nNull or omitted for run evaluators.",
+            "anyOf": [
+              {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/evaluators.CodeEvaluatorInput"
+                  }
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "dependencies": {
             "anyOf": [
@@ -80945,6 +81029,23 @@
           },
           "code": {
             "type": "string"
+          },
+          "code_evaluator_input": {
+            "description": "CodeEvaluatorInput is config (not a snapshot rebuild). Null clears it.",
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "thread",
+                  "all_messages",
+                  "human_ai_pairs",
+                  "first_human_last_ai"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "dependencies": {
             "anyOf": [
@@ -84502,7 +84603,18 @@
           "completion_token_details.reasoning",
           "completion_token_details.audio",
           "completion_token_details.image",
-          "completion_token_details.video"
+          "completion_token_details.video",
+          "prompt_cost_details.cache_creation",
+          "prompt_cost_details.cache_read",
+          "prompt_cost_details.ephemeral_1h_input_tokens",
+          "prompt_cost_details.ephemeral_5m_input_tokens",
+          "prompt_cost_details.audio",
+          "prompt_cost_details.image",
+          "prompt_cost_details.video",
+          "completion_cost_details.reasoning",
+          "completion_cost_details.audio",
+          "completion_cost_details.image",
+          "completion_cost_details.video"
         ],
         "x-enum-varnames": [
           "MetricFieldLatencySeconds",
@@ -84524,7 +84636,18 @@
           "MetricFieldCompletionTokenDetailsReasoning",
           "MetricFieldCompletionTokenDetailsAudio",
           "MetricFieldCompletionTokenDetailsImage",
-          "MetricFieldCompletionTokenDetailsVideo"
+          "MetricFieldCompletionTokenDetailsVideo",
+          "MetricFieldPromptCostDetailsCacheCreation",
+          "MetricFieldPromptCostDetailsCacheRead",
+          "MetricFieldPromptCostDetailsEphemeral1H",
+          "MetricFieldPromptCostDetailsEphemeral5M",
+          "MetricFieldPromptCostDetailsAudio",
+          "MetricFieldPromptCostDetailsImage",
+          "MetricFieldPromptCostDetailsVideo",
+          "MetricFieldCompletionCostDetailsReasoning",
+          "MetricFieldCompletionCostDetailsAudio",
+          "MetricFieldCompletionCostDetailsImage",
+          "MetricFieldCompletionCostDetailsVideo"
         ]
       },
       "runsanalytics.MetricParams": {
