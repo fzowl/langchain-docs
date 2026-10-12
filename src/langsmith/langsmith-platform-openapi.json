@@ -26345,9 +26345,9 @@
             "name": "limit",
             "in": "query",
             "schema": {
-              "minimum": 1,
               "default": 20,
               "maximum": 100,
+              "minimum": 1,
               "type": "integer",
               "title": "Limit"
             }
@@ -26357,8 +26357,8 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "minimum": 0,
               "default": 0,
+              "minimum": 0,
               "type": "integer",
               "title": "Offset"
             }
@@ -27728,11 +27728,11 @@
             "name": "direction",
             "in": "query",
             "schema": {
-              "default": "forward",
               "enum": [
                 "forward",
                 "backward"
               ],
+              "default": "forward",
               "type": "string",
               "title": "Direction"
             }
@@ -30293,7 +30293,7 @@
             }
           },
           "403": {
-            "description": "LLM Gateway not enabled for the organization, or caller lacks OrganizationManage",
+            "description": "LLM Gateway not enabled for the organization, or caller lacks organization:gateway:manage",
             "content": {
               "application/json": {
                 "schema": {
@@ -30584,7 +30584,7 @@
             }
           },
           "403": {
-            "description": "LLM Gateway not enabled, or caller lacks OrganizationManage",
+            "description": "LLM Gateway not enabled, or caller lacks organization:gateway:manage",
             "content": {
               "application/json": {
                 "schema": {
@@ -30674,7 +30674,7 @@
             }
           },
           "403": {
-            "description": "LLM Gateway not enabled, or caller lacks OrganizationManage",
+            "description": "LLM Gateway not enabled, or caller lacks organization:gateway:manage",
             "content": {
               "application/json": {
                 "schema": {
@@ -40365,9 +40365,9 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "minimum": 1,
               "default": 20,
               "maximum": 100,
+              "minimum": 1,
               "type": "integer",
               "title": "Page Size"
             }
@@ -40377,11 +40377,11 @@
             "name": "granularity",
             "in": "query",
             "schema": {
-              "default": "HOUR",
               "enum": [
                 "HOUR",
                 "RESOURCE"
               ],
+              "default": "HOUR",
               "type": "string",
               "title": "Granularity"
             }
@@ -42254,9 +42254,9 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "minimum": 1,
               "default": 20,
               "maximum": 100,
+              "minimum": 1,
               "type": "integer",
               "title": "Page Size"
             }
@@ -44341,7 +44341,7 @@
         "parameters": []
       },
       "post": {
-        "description": "Creates a new data plane object. Persists the rendered data plane spec, and returns 202 with the data plane in status=requested. Requires BYOC enabled org and org admin.\nUses the organization's assigned external ID to assume the AWS role. Configure that ID in the role's trust policy before creating a data plane.",
+        "description": "Creates a new data plane object. Persists the rendered data plane spec, and returns 202 with the data plane in status=requested. Requires BYOC enabled org and org admin.\nThe cloud of the control plane selects the AWS or the Azure request. For AWS, the control plane uses the organization's assigned external ID to assume the AWS role. Configure that ID in the role's trust policy before creating a data plane. For Azure, the control plane uses the Entra tenant and the resource group in the request.",
         "tags": [
           "data_planes"
         ],
@@ -44436,7 +44436,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/data_planes.CreateDataPlaneRequestAws"
+                "$ref": "#/components/schemas/data_planes.CreateDataPlaneRequest"
               }
             }
           }
@@ -44518,7 +44518,7 @@
         "x-public": true
       },
       "delete": {
-        "description": "Verifies that the stored customer AWS role has delete permissions, removes linked workspaces, and starts asynchronous deprovisioning for an active or provisioning_failed data plane owned by the caller's organization. Requires BYOC to be enabled for the org and organization:infrastructure:manage.",
+        "description": "Verifies that the stored customer AWS role has delete permissions, or that the stored Azure subscription is reachable. Then removes linked workspaces and starts asynchronous deprovisioning for an active or provisioning_failed data plane owned by the caller's organization. Azure data planes can also be deleted while provisioning. Requires BYOC to be enabled for the org and organization:infrastructure:manage.",
         "tags": [
           "data_planes"
         ],
@@ -44758,9 +44758,9 @@
             "name": "limit",
             "in": "query",
             "schema": {
-              "minimum": 1,
               "default": 50,
               "maximum": 100,
+              "minimum": 1,
               "type": "integer",
               "title": "Limit"
             }
@@ -44769,8 +44769,8 @@
             "name": "offset",
             "in": "query",
             "schema": {
-              "minimum": 0,
               "default": 0,
+              "minimum": 0,
               "type": "integer",
               "title": "Offset"
             }
@@ -45734,9 +45734,9 @@
             "name": "page_size",
             "in": "query",
             "schema": {
-              "minimum": 1,
               "default": 20,
               "maximum": 100,
+              "minimum": 1,
               "type": "integer",
               "title": "Page Size"
             }
@@ -79896,8 +79896,23 @@
           }
         }
       },
+      "data_planes.CreateDataPlaneRequest": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/data_planes.CreateDataPlaneRequestAws"
+          },
+          {
+            "$ref": "#/components/schemas/data_planes.CreateDataPlaneRequestAzure"
+          }
+        ]
+      },
       "data_planes.CreateDataPlaneRequestAws": {
         "type": "object",
+        "required": [
+          "name",
+          "region",
+          "role_arn"
+        ],
         "properties": {
           "additional_tags": {
             "type": "array",
@@ -79933,7 +79948,42 @@
             "description": "VPCCIDR is used only when LangSmith creates the VPC.",
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
+      },
+      "data_planes.CreateDataPlaneRequestAzure": {
+        "type": "object",
+        "required": [
+          "azure_entra_tenant_id",
+          "name",
+          "region",
+          "resource_group_id",
+          "vpc_cidr"
+        ],
+        "properties": {
+          "azure_entra_tenant_id": {
+            "description": "EntraTenantID is the Microsoft Entra tenant of the resource group.",
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "public_load_balancer": {
+            "type": "boolean"
+          },
+          "region": {
+            "type": "string"
+          },
+          "resource_group_id": {
+            "description": "ResourceGroupID is /subscriptions/<subscription ID>/resourceGroups/<name>:\nthe group that the LangSmith BYOC Terraform module created for this data\nplane. It must contain only the data plane Key Vault. LangSmith deletes the\ngroup when the data plane is deleted.",
+            "type": "string"
+          },
+          "vpc_cidr": {
+            "description": "VPCCIDR is the VNet that LangSmith creates.",
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
       },
       "data_planes.CreateErrorResponse": {
         "type": "object",
@@ -79994,10 +80044,12 @@
       "data_planes.DataPlaneCloud": {
         "type": "string",
         "enum": [
-          "AWS"
+          "AWS",
+          "AZURE"
         ],
         "x-enum-varnames": [
-          "DataPlaneCloudAWS"
+          "DataPlaneCloudAWS",
+          "DataPlaneCloudAzure"
         ]
       },
       "data_planes.DataPlaneFirewallSettings": {
@@ -80083,6 +80135,10 @@
               "type": "string"
             }
           },
+          "azure_entra_tenant_id": {
+            "description": "EntraTenantID is the Microsoft Entra tenant of the resource group.",
+            "type": "string"
+          },
           "byovpc": {
             "$ref": "#/components/schemas/data_planes.DataPlaneBYOVPCSettings"
           },
@@ -80098,11 +80154,14 @@
           "is_public_load_balancer": {
             "type": "boolean"
           },
+          "resource_group_id": {
+            "type": "string"
+          },
           "role_arn": {
             "type": "string"
           },
           "vpc_cidr": {
-            "description": "VPCCIDR is the effective VPC CIDR, including for customer-managed VPCs.",
+            "description": "VPCCIDR is the effective AWS VPC or Azure VNet CIDR, including for customer-managed VPCs.",
             "type": "string"
           }
         }
@@ -80319,7 +80378,7 @@
             "$ref": "#/components/schemas/data_planes.UpdateDataPlaneFleetOIDCSettings"
           },
           "maintenance_window": {
-            "description": "MaintenanceWindow is the two-hour weekly maintenance window in UTC.",
+            "description": "MaintenanceWindow is a weekly UTC window: two hours on AWS, or four hours on Azure.",
             "type": "string"
           },
           "ttl": {
