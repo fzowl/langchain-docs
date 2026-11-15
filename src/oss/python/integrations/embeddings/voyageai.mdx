@@ -1,20 +1,20 @@
 ---
-title: VoyageAI by MongoDB integration
-description: Integrate with the VoyageAI by MongoDB embedding model using LangChain Python.
+title: Voyage AI by MongoDB integration
+description: Integrate with the Voyage AI by MongoDB embedding model using LangChain Python.
 integration:
   name: Voyage AI
   pypi: langchain-voyageai
 ---
 
->[VoyageAI by MongoDB](https://www.voyageai.com/) provides cutting-edge embedding/vectorizations models.
+>[Voyage AI by MongoDB](https://www.voyageai.com/) provides cutting-edge embedding/vectorizations models.
 
-Let's load the VoyageAI by MongoDB Embedding class. (Install the LangChain partner package with `pip install langchain-voyageai`)
+Let's load the Voyage AI by MongoDB Embedding class. (Install the LangChain partner package with `pip install langchain-voyageai`)
 
 ```python
 from langchain_voyageai import VoyageAIEmbeddings
 ```
 
-VoyageAI by MongoDB utilizes API keys to monitor usage and manage permissions. To obtain your key, create an account on our [homepage](https://www.voyageai.com). Then, create a VoyageEmbeddings model with your API key. You can use any of the following models: ([source](https://docs.voyageai.com/docs/embeddings)):
+Voyage AI by MongoDB utilizes API keys to monitor usage and manage permissions. To obtain your key, create an account on our [homepage](https://www.voyageai.com). Then, create a VoyageEmbeddings model with your API key. You can use any of the following models: ([source](https://www.mongodb.com/docs/voyageai/models/text-embeddings/)):
 
 - `voyage-4-large`
 - `voyage-4`
@@ -25,6 +25,7 @@ VoyageAI by MongoDB utilizes API keys to monitor usage and manage permissions. T
 - `voyage-3.5`
 - `voyage-3.5-lite`
 - `voyage-3-large`
+- `voyage-code-3`
 - `voyage-3`
 - `voyage-3-lite`
 - `voyage-large-2`
@@ -114,7 +115,7 @@ An LLMChain is a chain that composes basic LLM functionality. It consists of a P
 
 ## Contextualized chunk embeddings
 
-The contextual models (`voyage-context-4` and `voyage-context-3`) embed each chunk with the context of the surrounding chunks from the same document ([source](https://docs.voyageai.com/docs/contextualized-chunk-embeddings)). `VoyageAIEmbeddings` supports them directly: for documents it calls the `contextualized_embed` endpoint with `enable_auto_chunking=True`, so you can pass whole documents as plain strings.
+The contextual models (`voyage-context-4` and `voyage-context-3`) embed each chunk with the context of the surrounding chunks from the same document ([source](https://www.mongodb.com/docs/voyageai/models/contextualized-chunk-embeddings/)). `VoyageAIEmbeddings` supports them directly: for documents it calls the `contextualized_embed` endpoint with `enable_auto_chunking=True`, so you can pass whole documents as plain strings.
 
 ```python
 embeddings = VoyageAIEmbeddings(model="voyage-context-4")
